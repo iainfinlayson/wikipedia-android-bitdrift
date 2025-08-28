@@ -10,6 +10,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.view.ActionMode
 import androidx.appcompat.widget.Toolbar
@@ -52,6 +53,13 @@ class MainActivity : SingleFragmentActivity<MainFragment>(), MainFragment.Callba
         super.onCreate(savedInstanceState)
         if (!DeviceUtil.assertAppContext(this)) {
             return
+        }
+
+        onBackPressedDispatcher.addCallback(this) {
+            if (fragment.onBackPressed()) {
+                return@addCallback
+            }
+            finish()
         }
 
         setImageZoomHelper()
@@ -143,13 +151,6 @@ class MainActivity : SingleFragmentActivity<MainFragment>(), MainFragment.Callba
 
     override fun onGoOnline() {
         fragment.onGoOnline()
-    }
-
-    override fun onBackPressed() {
-        if (fragment.onBackPressed()) {
-            return
-        }
-        super.onBackPressed()
     }
 
     private fun handleIntent(intent: Intent) {
