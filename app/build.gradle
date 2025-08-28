@@ -47,15 +47,9 @@ android {
 
     defaultConfig {
         applicationId 'org.wikipedia'
-<<<<<<< HEAD
         minSdk 24
-        targetSdk 35
+        targetSdk 36
         versionCode 50543
-=======
-        minSdk = 21
-        targetSdk = 36
-        versionCode 50546
->>>>>>> upstream/main
         testApplicationId 'org.wikipedia.test'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
