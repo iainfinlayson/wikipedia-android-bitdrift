@@ -1,3 +1,12 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath(libs.capture.plugin)
+    }
+}
+
 plugins {
     id 'com.android.application'
     id 'com.google.devtools.ksp'
@@ -5,7 +14,6 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
     id 'kotlinx-serialization'
-    id 'io.bitdrift.capture-plugin' version '0.18.6'
     alias(libs.plugins.compose.compiler)
 }
 
@@ -65,7 +73,6 @@ android {
                             props.load(it)
                             return props.getProperty("BITDRIFT_API_KEY", "")
                         }
-
                 buildConfigField "String", "BITDRIFT_API_KEY", "\"${bitdriftApiKey}\""
             }
         }
@@ -182,6 +189,7 @@ configurations {
 
 apply from: '../gradle/src/test.gradle'
 apply from: '../gradle/src/ktlint.gradle'
+apply plugin: 'io.bitdrift.capture-plugin'
 
 dependencies {
 

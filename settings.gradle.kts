@@ -3,7 +3,6 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
-        maven(url = "https://dl.bitdrift.io/sdk/android-maven")
     }
 }
 dependencyResolutionManagement {

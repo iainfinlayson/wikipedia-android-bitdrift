@@ -43,8 +43,6 @@ import io.bitdrift.capture.Capture.Logger
 import io.bitdrift.capture.providers.session.SessionStrategy
 import okhttp3.HttpUrl.Companion.toHttpUrl
 
-
-
 class WikipediaApp : Application() {
 
     init {
