@@ -1,10 +1,5 @@
 package org.wikipedia.main
 
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import androidx.core.view.MenuProvider
-import androidx.lifecycle.Lifecycle
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -72,17 +67,6 @@ class MainActivity : SingleFragmentActivity<MainFragment>(), MainFragment.Callba
         supportActionBar?.title = ""
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         binding.mainToolbar.navigationIcon = null
-
-        addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
-                inflater.inflate(R.menu.menu_bitdriftdev, menu)
-            }
-            override fun onMenuItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-                R.id.menu_slow_leak -> { org.wikipedia.bitdriftdev.DebugLeaker.startSlowLeak(); true }
-                R.id.menu_force_oom -> { org.wikipedia.bitdriftdev.DebugLeaker.forceOutOfMemoryCrash(); true }
-                else -> false
-            }
-        }, this, Lifecycle.State.RESUMED)
 
         if (savedInstanceState == null) {
             handleIntent(intent)
