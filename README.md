@@ -1,14 +1,17 @@
-### Wikipedia Android app
+### Wikipedia Android app instrumented with the bitdrift Capture SDK!
 
-This repository contains the source code for the official [Wikipedia Android app](https://play.google.com/store/apps/details?id=org.wikipedia).
+This repository contains the source code for our fork of the official [Wikipedia Android app](https://play.google.com/store/apps/details?id=org.wikipedia).
+
+We have instrumented the [bitdrift Capture SDK](https://docs.bitdrift.io/) in this version for mobile observability.
+
+Additional features have been added to support our series of bitdrift hands-on blog-posts. Check them out on the [bitdrift blog](https://blog.bitdrift.io/)! 
 
 ### Documentation
 
-All documentation is kept on [our wiki](https://www.mediawiki.org/wiki/Wikimedia_Apps/Team/Android/App_hacking). Check it out!
+All documentation is kept on [our website](https://docs.bitdrift.io/)). Check it out!
+
+Check out this [hands-on guide](https://blog.bitdrift.io/post/hands-on-wikipedia-android) to instrumenting the Wikipedia app
 
 ### Issues
 
-Kindly file issues in [our bug tracker][1]
-
-
-[1]: https://phabricator.wikimedia.org/maniphest/task/edit/form/10/?title=&projects=wikipedia-android-app-backlog&points=1&description=%3D%3D%3D+Steps+to+reproduce%0A%23+%0A%23+%0A%23+%0A%0A%3D%3D%3D+Expected+results%0A%0A%3D%3D%3D+Actual+results%0A%0A%3D%3D%3D+Stack%20trace%0A%60%60%60lines%3D10%0A(Optional%20logcat%20output)%0A%60%60%60%0A%0A%3D%3D%3D+Environments+observed%0A**App+version%3A+**+%0A**Android+OS+versions%3A**+%0A**Device+model%3A**+%0A**Device+language%3A**
+If you have questions or encounter issues, we’d be happy to help. Drop into our [public Slack channel](https://communityinviter.com/apps/bitdriftpublic/bitdrifters) or email us at [info@bitdrift.io](mailto:info@bitdrift.io).
