@@ -4,7 +4,7 @@ This repository contains the source code for our fork of the official [Wikipedia
 
 We have instrumented the [bitdrift Capture SDK](https://docs.bitdrift.io/) in this version for mobile observability.
 
-Additional features have been added to support our series of bitdrift hands-on blog-posts. Check them out on the [bitdrift blog](https://blog.bitdrift.io/)!
+Additional features have been added to support our series of bitdrift hands-on blog-posts. Check them out on the [bitdrift blog](https://blog.bitdrift.io/)! 
 
 ### Documentation
 

@@ -19,6 +19,7 @@ object L {
             }
         }
     }
+
     private val LEVEL_D: LogLevel = object : LogLevel() {
         override fun logLevel(tag: String?, msg: String?, t: Throwable?) {
             Log.d(tag, msg, t)

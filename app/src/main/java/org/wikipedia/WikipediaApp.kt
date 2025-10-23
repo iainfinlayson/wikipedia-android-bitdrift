@@ -46,6 +46,7 @@ import okhttp3.HttpUrl.Companion.toHttpUrl
 import org.wikipedia.bitdriftdev.GlobalDebugGesture
 
 class WikipediaApp : Application() {
+
     init {
         instance = this
     }
