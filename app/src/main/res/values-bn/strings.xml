@@ -64,7 +64,7 @@
   <string name="page_error_back_to_main">ফিরে যান</string>
   <string name="error_back">ফিরে যান</string>
   <string name="error_next">পরবর্তী</string>
-  <string name="menu_clear_all_history">ইতিহাস পরিষ্কার</string>
+  <string name="menu_clear_all_history" fuzzy="true">ইতিহাস পরিষ্কার</string>
   <string name="history_item_deleted">ইতিহাস থেকে %s সরানো হয়েছে</string>
   <string name="history_items_deleted">ইতিহাস থেকে %dটি নিবন্ধ সরানো হয়েছে</string>
   <string name="history_item_delete_undo">পূর্বাবস্থা</string>
@@ -77,7 +77,7 @@
   <string name="wikimedia_commons">উইকিমিডিয়া কমন্স</string>
   <string name="wikidata">উইকিউপাত্ত</string>
   <string name="dialog_title_clear_history">ব্রাউজ করার ইতিহাস অপসারণ করবেন</string>
-  <string name="dialog_message_clear_history">এটি আপনার ব্রাউজ করা সব ইতিহাস মুছে দিবে, এবং বর্তমানে খোলা সব ট্যাব বন্ধ করবে। আপনি কি নিশ্চিত?</string>
+  <string name="dialog_message_clear_history" fuzzy="true">এটি আপনার ব্রাউজ করা সব ইতিহাস মুছে দিবে, এবং বর্তমানে খোলা সব ট্যাব বন্ধ করবে। আপনি কি নিশ্চিত?</string>
   <string name="dialog_message_clear_history_yes">হ্যাঁ</string>
   <string name="dialog_message_clear_history_no">না</string>
   <string name="share_via">এর মাধ্যমে শেয়ার</string>
@@ -260,7 +260,6 @@
   <string name="terms_of_use_description">ব্যবহারের শর্তাবলী</string>
   <string name="about_wikipedia_url">https://bn.wikipedia.org/wiki/উইকিপিডিয়া:বৃত্তান্ত</string>
   <string name="privacy_policy_url" fuzzy="true">https://meta.m.wikimedia.org/wiki/Privacy_policy/bn</string>
-  <string name="offline_reading_and_data_url" fuzzy="true">https://www.mediawiki.org/wiki/Wikimedia_Apps/Android_FAQ#Offline_reading_and_data</string>
   <string name="android_app_faq_url" fuzzy="true">https://www.mediawiki.org/wiki/Wikimedia_Apps/Android_FAQ/bn</string>
   <string name="terms_of_use_url" fuzzy="true">https://foundation.wikimedia.org/wiki/Terms_of_Use/bn</string>
   <string name="android_app_request_an_account_url">https://bn.wikipedia.org/wiki/উইকিপিডিয়া:অ্যাকাউন্টের_জন্য_অনুরোধ</string>
@@ -268,7 +267,7 @@
   <string name="cc_0_url">https://creativecommons.org/publicdomain/zero/1.0/deed.bn</string>
   <string name="about_libraries_heading">ব্যবহৃত গ্রন্থাগারগুলি</string>
   <string name="about_contributors_heading">অবদানকারীগণ</string>
-  <string name="about_contributors" fuzzy="true">&lt;a href=\"https://www.mediawiki.org/wiki/Wikimedia_Apps/Team/Android\"&gt;দলের পাতা&lt;/a&gt;</string>
+  <string name="about_contributors">&lt;a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Wikimedia_Apps/Team/Android\"&gt;দলের পাতা&lt;/a&gt;</string>
   <string name="about_translators_heading">অনুবাদকগণ</string>
   <string name="about_translators_translatewiki">এই অ্যাপ্লিকেশন স্বেচ্ছাসেবী অনুবাদকদের দ্বারা &lt;a href=\"https://translatewiki.net\"&gt;translatewiki.net&lt;/a&gt;-এ অনূদিত হয়েছে।</string>
   <string name="about_app_license_heading">লাইসেন্স</string>
@@ -1210,7 +1209,7 @@
   <string name="on_this_day_game_score">স্কোর: %d</string>
   <string name="on_this_day_game_correct">সঠিক!</string>
   <string name="on_this_day_game_point">+১ পয়েন্ট</string>
-  <string name="year_in_review_get_started">শুরু করুন</string>
+  <string name="year_in_review_get_started" fuzzy="true">শুরু করুন</string>
   <string name="year_in_review_topbar_w_icon">উইকিপিডিয়া ডব্লিউ আইকন</string>
   <string name="year_in_review_donate">দান করুন</string>
   <string name="year_in_review_information_icon">তথ্য আইকন</string>

@@ -9,6 +9,8 @@ import androidx.core.widget.ImageViewCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import org.wikipedia.R
 import org.wikipedia.activity.FragmentUtil
+import org.wikipedia.activitytab.ActivityTabABTest
+import org.wikipedia.analytics.eventplatform.ActivityTabEvent
 import org.wikipedia.analytics.eventplatform.BreadCrumbLogEvent
 import org.wikipedia.analytics.eventplatform.DonorExperienceEvent
 import org.wikipedia.analytics.eventplatform.PlacesEvent
@@ -17,8 +19,10 @@ import org.wikipedia.databinding.ViewMainDrawerBinding
 import org.wikipedia.page.ExtendedBottomSheetDialogFragment
 import org.wikipedia.places.PlacesActivity
 import org.wikipedia.settings.Prefs
+import org.wikipedia.suggestededits.SuggestedEditsTasksActivity
 import org.wikipedia.util.DimenUtil
 import org.wikipedia.util.ResourceUtil.getThemedColorStateList
+import org.wikipedia.yearinreview.YearInReviewViewModel
 
 class MenuNavTabDialog : ExtendedBottomSheetDialogFragment() {
     interface Callback {
@@ -38,7 +42,7 @@ class MenuNavTabDialog : ExtendedBottomSheetDialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = ViewMainDrawerBinding.inflate(inflater, container, false)
 
-        binding.mainDrawerYearInReviewContainer.isVisible = Prefs.isYearInReviewEnabled
+        binding.mainDrawerYearInReviewContainer.isVisible = YearInReviewViewModel.isAccessible && Prefs.isYearInReviewEnabled
 
         binding.mainDrawerAccountContainer.setOnClickListener {
             BreadCrumbLogEvent.logClick(requireActivity(), binding.mainDrawerAccountContainer)
@@ -91,6 +95,14 @@ class MenuNavTabDialog : ExtendedBottomSheetDialogFragment() {
             callback()?.yearInReviewClick()
             dismiss()
         }
+        binding.yearInReviewRedDot.isVisible = !Prefs.yearInReviewVisited
+
+        binding.mainDrawerEditContainer.setOnClickListener {
+            BreadCrumbLogEvent.logClick(requireActivity(), binding.mainDrawerEditContainer)
+            ActivityTabEvent.submit(activeInterface = "more_menu", action = "edit_click")
+            startActivity(SuggestedEditsTasksActivity.newIntent(requireContext()))
+            dismiss()
+        }
 
         updateState()
         return binding.root
@@ -140,6 +152,7 @@ class MenuNavTabDialog : ExtendedBottomSheetDialogFragment() {
             binding.mainDrawerWatchlistContainer.visibility = View.GONE
             binding.mainDrawerContribsContainer.visibility = View.GONE
         }
+        binding.mainDrawerEditContainer.isVisible = ActivityTabABTest().isInTestGroup()
     }
 
     private fun callback(): Callback? {

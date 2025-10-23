@@ -6,6 +6,7 @@
 * Baloch Khan
 * Dbrant
 * MuratTheTurkish
+* O.sediqi93
 * شاه زمان پټان
 -->
 <resources>
@@ -24,6 +25,7 @@
   <string name="search_icon_content_description">پلټل</string>
   <string name="filter_hint_filter_my_lists_and_articles">لړليکونه مې چاڼول</string>
   <string name="nav_item_suggested_edits">سمونونه</string>
+  <string name="nav_item_activity">چاره</string>
   <string name="nav_item_more">نور</string>
   <string name="nav_item_search">پلټل</string>
   <string name="nav_item_contribute">ونډه اخيستل</string>
@@ -36,7 +38,7 @@
   <string name="page_error_back_to_main">پر شا تلل</string>
   <string name="error_back">پر شا تلل</string>
   <string name="error_next">راتلونکی</string>
-  <string name="menu_clear_all_history">پېښليک پاکول</string>
+  <string name="menu_clear_all_history">لوست پېښليک پاکول</string>
   <string name="history_item_deleted">%s له پېښليک څخه لرې شو</string>
   <string name="history_items_deleted">%d ليکنې له پېښليک څخه لرې شوې</string>
   <string name="history_item_delete_undo">ناکړل</string>
@@ -49,7 +51,7 @@
   <string name="wikimedia_commons">ويکيمېډيا ټولواله</string>
   <string name="wikidata">ويکي‌اومتوک</string>
   <string name="dialog_title_clear_history">سپړل شوی پېښليک سپينول</string>
-  <string name="dialog_message_clear_history">دا به ستاسو د لټون ټول پېښليک ړنگ کړي، او هر اوسمهاله پرانېستې کړکۍ به وتړي. ايا تاسو ډاډه ياست؟</string>
+  <string name="dialog_message_clear_history">دا به ستاسو د لټون ټول پېښليک ړنگ کړي. ايا تاسو ډاډه ياست؟</string>
   <string name="dialog_message_clear_history_yes">هو</string>
   <string name="dialog_message_clear_history_no">نه</string>
   <string name="share_via">د شريکولو لار</string>
@@ -117,6 +119,7 @@
   <string name="language_count_link_text">په %d نورو ژبو د لاسرسي وړ ده</string>
   <string name="edit_save_action_license_logged_in">خپرولو سره، تاسو له &lt;a href=\"%1$s\"&gt; کارولو منښتونه&lt;/a&gt; منئ او د &lt;a href=\"%2$s\"&gt;CC BY-SA 4.0&lt;/a&gt; منښتليک لاندې خپلې ونډې په نه بدلېدونکي ډول خپروئ.</string>
   <string name="edit_save_action_license_anon">د خپرولو سره تاسو د &lt;a href=\"%1$s\"&gt;کارولو منښتونه&lt;/a&gt; منئ او په نه بدلېدونکي ډول خپلې ونډې د &lt;a href=\"%2$s/\"&gt;CC BY-SA 4.0&lt;/a&gt; منښتليک لاندې خپروئ. سمونونه به ستاسو د سولگر وېبپتې ته منسوب شي. که تاسو &lt;a href=\"https://#login\"&gt;ننوځئ&lt;/a&gt;؛ نو تاسو به ډېره پټنتيا ولرئ.</string>
+  <string name="edit_anon_warning">سمونونه به ستاسو د سولگر وېبپتې ته منسوب شي، که چېرې تاسو &lt;a href=\"https://#login\"&gt;ننوځئ&lt;/a&gt;؛ نو تاسو به ډېر خونديتوب ولرئ.</string>
   <string name="preference_title_language">د ويکيپېډيا ژبې</string>
   <string name="langlinks_filter_hint">پلټل</string>
   <string name="langlinks_empty">دا مخ په نورو ژبو کې نشته.</string>
@@ -142,6 +145,7 @@
   <string name="search_reading_lists_no_results">لوست لړليکونو کې هيڅ پايلې ونه موندل شوې</string>
   <string name="search_history_no_results">پېښليک کې هيڅ پايلې ونه موندل شوې</string>
   <string name="edit_section_captcha_message">د خپلکاره سپم څخه ژغورنې لپاره مهرباني وکړئ لاندېې ويي وليکئ.</string>
+  <string name="edit_section_captcha_request_an_account_message">انځور نه وينئ؟&lt;a href=\"https://ps.wikipedia.org/wiki/Wikipedia:Request_an_account\"&gt;د يو گڼون غوښتنه وکړئ&lt;/a&gt;</string>
   <string name="edit_section_captcha_hint">پورتني ويوکي بياويل</string>
   <string name="title_captcha">کېپچا ورکړئ</string>
   <string name="edit_section_captcha_reload">په کپچا گوته ووهئ چې بيابرسېره شي</string>
@@ -150,6 +154,7 @@
   <string name="login_password_hint">پټنوم</string>
   <string name="account_creation_password_hint">پټنوم</string>
   <string name="login_2fa_hint">دوه‌پړاويز تاييد کوډ</string>
+  <string name="login_2fa_other_workflow_error_msg">دوه‌گونی تاييد اړين دی! مهرباني وکړئ له ارې ښيښې ورننوځئ او د خپل دوه‌گوني تاييد کونجي کوډ وردننه کړئ.</string>
   <string name="login_email_auth_hint">برېښليک تاييد کوډ</string>
   <string name="login_email_auth_other_workflow_error_msg">برېښليک تاييدول اړين دي!\nمهرباني وکړئ له آر سکرين څخه ننوځئ، او  خپل د برېښليک تاييد کوډ دننه کړئ.</string>
   <string name="login_background_error_msg">بياننوتل ناشوني دي. مهرباني وکړئ آر سکرين ته ورشئ او په لاسي ډول ننوځئ.</string>
@@ -162,16 +167,20 @@
   <string name="login_in_progress_dialog_message">په ننوتلو کې دی…</string>
   <string name="login_success_toast">ورننوتي ياست!</string>
   <string name="reset_password_title">پټنوم مو وټاکئ</string>
+  <string name="reset_password_description">تاسو له لنډمهاله پټنوم سره ننوتي ياست. د ننوتلو بشپړولو لپاره مهرباني وکړئ، خپل نوی پټنوم دلته واوڼئ.</string>
   <string name="reset_password_hint">نوی پټنوم</string>
   <string name="reset_password_button">خوندي کول او ننوتل</string>
   <string name="preference_title_logout">وتل</string>
   <string name="toast_logout_complete">ووتلئ</string>
+  <string name="logout_prompt">دا به تاسو په ټولو هغو وسيلو کې چې تاسو ننوتلي ياست، وباسي. ايا تاسو غواړئ چې دوام ورکړئ؟</string>
   <string name="logout_dialog_cancel_button_text">ناگارل</string>
   <string name="logged_out_in_background_title">ووتلی</string>
+  <string name="logged_out_in_background_dialog">تاسو له ويکيپېډيا څخه ووتلئ؟ ايا تاسو غواړئ چې بېرته ننوځئ؟</string>
   <string name="logged_out_in_background_login">ننوتل</string>
   <string name="logged_out_in_background_cancel">ناگارل</string>
   <string name="account_vanish_request_title">گڼون له منځه وړل</string>
   <string name="account_vanish_request_confirm_title">د گڼون له منځه وړلو خبرتيا</string>
+  <string name="account_vanish_request_confirm">ورکېدل يوه &lt;b&gt;وروستۍ چاره ده&lt;/b&gt; او بايد &lt;b&gt;يوازې هغه وخت وکارول شي کله چې تاسو غواړئ د تل لپاره سمون پرېږدئ&lt;/b&gt; او همدارنگه تر شوني بريده د ځان اړوند پخوانۍ اړيکې پټې کړئ.&lt;br/&gt;&lt;br/&gt;په ويکيپېډيا کې گڼون ړنگول ستاسو د گڼون نوم بدلولو له لارې ترسره کېږي؛ ترڅو نور ستاسو ونډې ونه پېژني، دې چارې ته ورکېدل يا گڼون له منځه وړل وايي. &lt;b&gt;ورکېدل په پروژو کې په بشپړ ډول ستاسو د هويت او ونډو لرې کولو ډاډ نه درکوي&lt;/b&gt;.</string>
   <string name="history_empty_title">وروستيو کې هيڅ ليکنې ليدل شوې نه دي</string>
   <string name="history_empty_message">هغه څه چې تاسو دلته لوستې دي، وڅارئ.</string>
   <string name="history_offline_articles_toast">په پېښليک کې ځينې ليکنې شايد د افلاين کېدو پرمهال د کتلو وړ نه وي.</string>
@@ -218,29 +227,42 @@
   <string name="preference_summary_sync_reading_lists">د خپل ويکيپېډيا گڼون کې د خوندي کولو سره په بېلابېلو وسيلو کې د لوست لړليکونه همغږي کول</string>
   <string name="preference_summary_sync_reading_lists_from_account">خپل ويکيپېډيا گڼون \"%s\" کې د خوندي کولو سره په بېلابېلو وسيلو کې لوست لړليکونه همغږي کول.</string>
   <string name="preference_dialog_of_turning_off_reading_list_sync_title">\"%s\" څخه دې همغږي شوي لوست لړليکونه لرې شي؟</string>
+  <string name="preference_dialog_of_turning_off_reading_list_sync_text">دا کړنه به له انلاین زېرمتون (remote storage) څخه ټول هغه د لوستلو لیستونه (reading lists)، چې تر دې وړاندې همغږي (synced) شوي دي، په بشپړه توګه له منځه یوسي.\nایا ته غواړې چې د خپل \"%s\" اکاونټ (account) څخه ټول همغږي شوي لیستونه ړنګ کړم؟</string>
   <string name="preference_title_auto_upload_crash_reports">د ټکر راپورونه لېږل</string>
+  <string name="preference_summary_auto_upload_crash_reports">کاریال یا(app) دا اجازه ورکړه چې د خطا راپورونه (crash reports) په اوتومات ډول د چوپړتیاوو وړاندې کوونکي درېیمې ډلې (third-party service provider) ته واستوي، تر څو موږ وکولی شو ستا ستونزه ترلاسه او نیمګړتیا (bug) په چټک او اسانه ډول سم کړو.</string>
+  <string name="editing_error_spamblacklist">دا موندل شوي تړوني  یا (links) له تړل شوو ويب‌پاڼو (blocked domains) (%s) سره تړاو لري، مهرباني وکړئ، دا تړړوني  لیرې کړئ او بیا هڅه وکړئ.</string>
   <string name="history_filter_list_hint">چاڼگر پېښليک</string>
   <string name="error_can_not_process_link">دا تړنه ښکاره نه شوه</string>
   <string name="page_protected_autoconfirmed">دا مخ نيم-ژغورلی دی.</string>
   <string name="page_protected_sysop">دا مخ بشپړ ژغورلی دی.</string>
+  <string name="page_protected_other">دا پاڼه د لاندې اندازه(levels) تر مخې خوندي (protected) شوې ده: %s</string>
+  <string name="page_protected_can_not_edit">بښنه غواړو، ستا اکاونټ (account) دا مهال د دې پاڼې د سمون (edit) لپارهاړین صلاحیتونه (privileges) نه لري.</string>
+  <string name="page_protected_can_not_edit_anon">ښنه غواړو، دا پاڼه په نا مالوم حالت(anonymously) کې د سملولو سیسټم نه قبلوي.</string>
   <string name="page_protected_can_not_edit_title">دا مخ ژغورل شوی</string>
   <string name="page_watchlist_overflow_menu_onboarding_tooltip_title">کتنلړ کې ورگډول</string>
+  <string name="page_watchlist_overflow_menu_onboarding_tooltip_text"> د هغو مقالو (articles څارنه وکړه چې ستاسو خوښېږي. د اضافي مینو (overflow menu) کلیک کړه او &lt;b&gt;په څارلیسټ کې اضافه کړه (Add to Watchlist)&lt;/b&gt; انتخاب کړه، تر څو د مقالو له بدلونونو خبر شې.</string>
   <string name="settings_item_preferences">اوڼنې</string>
   <string name="settings_activity_title">اوڼنې</string>
   <string name="about_description">د ويکيپېډيا کاريال په اړه</string>
   <string name="privacy_policy_description">د پټنتيا تگلار</string>
   <string name="terms_of_use_description">د کارولو منښتونه</string>
-  <string name="android_app_faq_url">https://www.mediawiki.org/wiki/Special:MyLanguage/Wikimedia_Apps/Android_FAQ</string>
+  <string name="about_wikipedia_url">https://ps.wikipedia.org/wiki/ويکيپېډيا:پېژندنه</string>
   <string name="android_app_request_an_account_url">https://ps.wikipedia.org/wiki/ويکيپېډيا:د_گڼون_جوړېدو_غوښتنه</string>
   <string name="about_libraries_heading">کارېدلي کتابتونونه</string>
   <string name="about_contributors_heading">ونډه‌وال</string>
   <string name="about_contributors">&lt;a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Wikimedia_Apps/Team/Android\"&gt;ډله مخ&lt;/a&gt;</string>
   <string name="about_translators_heading">ژباړونکي</string>
+  <string name="about_translators_translatewiki">د کاریال د رضاکارو ژباړونکو (volunteer translators) له خوا په &lt;a href=\"https://translatewiki.net\"&gt;translatewiki.net&lt;/a&gt; کې وژباړل شو.</string>
   <string name="about_app_license_heading">منښتليک</string>
+  <string name="about_app_license">د سرچینې کوډ (source code) په &lt;a href=\"https://github.com/wikimedia/apps-android-wikipedia\"&gt;GitHub&lt;/a&gt; کې د &lt;a href=\"https://www.apache.org/licenses/LICENSE-2.0\"&gt;Apache 2.0 License&lt;/a&gt; لاندې شتون لري. تر هغه ځایه چې بل څه نه وي ښودل شوي، منځپانګه (content) د &lt;a href=\"https://creativecommons.org/licenses/by-sa/4.0\"&gt;Creative Commons Attribution-ShareAlike License&lt;/a&gt; لاندې شتون ده.</string>
+  <string name="about_wmf">د &lt;a href=\"https://wikimediafoundation.org/\"&gt;Wikimedia Foundation&lt;/a&gt; یو تولید (product) دی.</string>
   <string name="about_activity_title">په اړه</string>
+  <string name="about_logo_content_description">د ویکي‌ پیډیا (Wikipedia) د معمايي نړۍ (puzzle globe) لوګو (logo)</string>
   <string name="edit_abandon_confirm_yes">هو</string>
   <string name="edit_abandon_confirm_no">نه</string>
   <string name="user_blocked_from_editing_title">بنديز لگېدلی</string>
+  <string name="user_logged_in_blocked_from_editing">ستاسې اکاونټ (user account) د دې ویکي (wiki) د ایډیټ (editing) کولو له امله بلاک شوی دی.</string>
+  <string name="user_anon_blocked_from_editing">ستاسو د انټرنېټ پته یا (IP address) د دې پاڼې د سمون (editing) لپاره بنده شوې ده.</string>
   <string name="edit_how_page_improved">ليکنه مو څنگه ښه کړه؟</string>
   <string name="edit_next">راتلونکی</string>
   <string name="edit_done">خپرول</string>
@@ -265,6 +287,7 @@
   <string name="edit_summary_added_short_description">ورگډشوی لنډ څرگنداوی</string>
   <string name="edit_summary_updated_short_description">هم‌مهاله‌شوی لنډ څرگنداوی</string>
   <string name="edit_conflict_title">سمون شخړه</string>
+  <string name="edit_conflict_message">دا پاڼه له پخوا  د (user) له خوا بدله شوې ده او ستاسو سمون (edit) ورسره ټکر کې دی. مهرباني وکړئ خپل بدلونونه (edits) کاپي کړه، او  پاڼه تازه (refresh) کړه، بیا هڅه وکړه چې سمون (edit) وکړي.</string>
   <string name="edit_notices">سمون يادښتونه</string>
   <string name="edit_notices_please_read">مهرباني وکړئ د سمون دمخه یې ولولئ</string>
   <string name="edit_notices_show_auto">په خپلکاري ډول سمون يادښتونه ښودل</string>
@@ -283,8 +306,10 @@
     <item quantity="other"> %d پایلې</item>
   </plurals>
   <string name="button_clear_all_recent_searches">وروستنۍ پلټنې سپينول</string>
+  <string name="clear_recent_searches_confirm">ايا تاسو ډاډه ياست چې خپل د پلټلو پېښليک سپاکول غواړئ؟</string>
   <string name="clear_recent_searches_confirm_yes">هو</string>
   <string name="clear_recent_searches_confirm_no">نه</string>
+  <string name="error_browser_not_found">وېب پاڼه نشي پرانېستلای (د ښوونگر کاریال ونه موندل شو).</string>
   <string name="table_infobox">چټک مالومات</string>
   <string name="table_other">نور مالومات</string>
   <string name="table_close">تړل</string>
@@ -469,11 +494,16 @@
   <string name="reading_list_deleted">%s ړنگ شو</string>
   <string name="saved_list_empty_title">لا تر اوسه پورې خوندي مخونه نشته</string>
   <string name="reading_list_article_offline">افلاين د لاسرسي وړ دی</string>
+  <string name="reading_list_article_make_offline">دا ليکنه په افلاين بڼه د لاسرسي وړ گرځول</string>
+  <string name="reading_list_add_to_other_list">بل لوستلړ ته ورگډول</string>
+  <string name="reading_list_move_to_other_list">بل لوستلړ ته لېږدول</string>
+  <string name="reading_list_move_from_to_other_list">له %s څخه بل لوستلړ ته لېږدول</string>
   <string name="reading_list_remove_from_list">له %s نه لرې‌کول</string>
   <string name="reading_list_remove_from_lists">له لوستلړونو لرې‌کول</string>
   <string name="reading_list_select_item">ټاکل</string>
   <string name="reading_list_confirm_remove_article_from_offline">له افلاين لرې کول</string>
   <string name="reading_list_confirm_remove_article_from_offline_title">ليکنه په څو لړليکونو کې ښکاري</string>
+  <string name="reading_list_confirm_remove_article_from_offline_message">%s به نور په ټولو لوستلړونو کې په افلاين بڼه د لاسرسي وړ نه وي:</string>
   <string name="reading_lists_login_button">ننوتل/ويکيپېډيا سره يو ځای کېدل</string>
   <string name="reading_lists_ignore_button">اوس نه</string>
   <string name="reading_lists_confirm_remote_delete_yes">هو</string>
@@ -650,7 +680,7 @@
   <string name="view_continue_reading_card_subtitle_read_date">%s ولولئ</string>
   <string name="view_announcement_card_negative_action">نه مننه</string>
   <string name="view_offline_card_text">کله چې افلاين وي منځپانگه نشي بارېدای.</string>
-  <string name="view_featured_article_card_title">مخکښه ليکنه</string>
+  <string name="view_featured_article_card_title">غوره ليکنه</string>
   <string name="view_static_card_save_button_label">خوندي کول</string>
   <string name="feed_configure_activity_title">خواړه دوديزول</string>
   <string name="feed_configure_menu_reset">تلواله کتنه بيازېرمل</string>
@@ -673,7 +703,9 @@
   <string name="feed_lang_selection_dialog_cancel_button_text">ناگارل</string>
   <string name="feed_accessibility_card_load_more_button">نور بارول</string>
   <string name="feed_language_variants_removal_dialog_save">خوندي کول</string>
+  <string name="feed_language_variants_removal_secondary_dialog_title">مهرباني وکړئ خپلې دوهمي ژبې هم‌مهاله کړئ</string>
   <string name="feed_language_variants_removal_secondary_dialog_settings">اوڼنو ته ورتلل</string>
+  <string name="top_read_activity_title">په %s کې ډېرليدنې</string>
   <string name="tabs_activity_title">ريښکې</string>
   <string name="description_edit_text_hint">ليکنې څرگنداوی</string>
   <string name="description_edit_article_description_label">ليکنه</string>
@@ -693,24 +725,43 @@
   <string name="description_edit_translate_image_caption">انځور نيونگ ژباړل</string>
   <string name="description_edit_cancel_hint">ناگارل</string>
   <string name="description_edit_help_title">مالومات: ليکنې څرگنداوي</string>
-  <string name="description_edit_help_about_wikidata">د ويکيډاټا په اړه</string>
+  <string name="description_edit_help_about_wikidata">د ويکي‌اومتوک په اړه</string>
   <string name="description_edit_help_wikidata_guide">د ويکي‌اومتوک د څرگنداوي ليکنې لارښود</string>
   <string name="description_edit_voice_input_description">غږيزه ننوتنه</string>
   <string name="description_edit_learn_more">د ليکنې څرگنداوي په اړه نور زده کول</string>
   <string name="description_edit_image_caption_learn_more">د انځور نيونگو په اړه نور زده کول</string>
   <string name="description_too_short">ليک ډېر لنډ دی.</string>
+  <string name="description_starts_with_lowercase">په کوچني تورو له پيلولو ډډه‌کول.</string>
+  <string name="description_is_in_different_language">داسې ښکاري چې ليک په ناڅاپي ژبه کې دی. ژبه بايد %s وي.</string>
+  <string name="description_verification_notice">مهرباني وکړئ تاييد کړئ چې ستاسو څرگنډاوی په %1$s کې دی. که چېرې هغه څرگنداوی چې تاسو ليکلی په %2$s کې وي؛ نو دا خبرداری له پامه وغورځوئ.</string>
   <string name="description_edit_suggested_description_button_text">وړانديزشوو څرگنداوي ښودل</string>
+  <string name="description_edit_suggested_description_button_tooltip">د ماشيني وړانديزشوې ليکنې څرگنداوي هڅه کول</string>
+  <string name="description_edit_success_saved">د ليکنې څرگنداوی خپور شو!</string>
+  <string name="description_edit_success_saved_snackbar">د ليکنې څرگنداوی خپور شو!</string>
+  <string name="description_edit_success_saved_in_lang_snackbar">د ليکنې څرگنداوی خپور شو! (%s)</string>
+  <string name="description_edit_success_saved_image_caption_snackbar">د انځور نيونگ خپور شو!</string>
+  <string name="description_edit_success_saved_image_caption_in_lang_snackbar">د انځور نيونگ خپور شو! (%s)</string>
+  <string name="description_edit_success_saved_image_tags_snackbar">د انځور نښلن(ونه) خپور شو!</string>
+  <string name="description_edit_success_se_general_feed_link_snackbar">ترې خوند مو واخيست؟ له موږ سره مرسته وکړئ؛ چې نور ورگډ کړو.</string>
+  <string name="description_edit_success_encouragement">تاسو ويکيپېډيا د ټولو لپاره ښه کړه</string>
   <string name="description_edit_success_done">وشو</string>
   <string name="description_edit_success_did_you_know">ايا پوهېدې؟</string>
+  <string name="description_edit_success_article_edit_hint">تاسو کولی شئ په دې کاريال کې ليکنې سمې کړئ. بل ځل د ^1 نښې کېکاږلو سره املايي او کوچنيو جملو سمون وکړئ</string>
   <string name="description_edit_tutorial_title_descriptions">ليکنې څرگنداوي</string>
+  <string name="description_edit_tutorial_title_descriptions_summary">د لوستونکو پوهاوي لپاره د يوې ليکنې لنډيز وړاندې کوي</string>
   <string name="description_edit_tutorial_keep_it_short">لنډ یې وساتئ</string>
+  <string name="description_edit_tutorial_keep_it_short_instructions">د بېلگې په توگه يوه کرښه، د دوو څخه تر دولسو ويوکو پورې</string>
   <string name="description_edit_tutorial_button_label_start_editing">سمون پيلول</string>
+  <string name="description_edit_tutorial_promise">په پیل کې، زه ژمنه کوم چې له دې ځانگړنې نه ناوړه گټه نه اخلم.</string>
   <string name="description_edit_tutorial_machine_suggestions_title">ماشيني وړانديزونه</string>
+  <string name="description_edit_tutorial_machine_suggestions_description">وړانديزونه ماشيني پنځول شوي، خپل خوښو کارنانو يا ډ ويکي رسنۍ بنسټ نه دي پنځولي</string>
   <string name="customize_toolbar_title">توک‌پټه دوديزول</string>
+  <string name="customize_toolbar_shortcut_description_text">کښتنۍ توک‌پټه ستاسو له تنده له ۵ گټورو لنډلارو سره دوديزول.</string>
   <string name="customize_toolbar_category_toolbar">توکپټه</string>
   <string name="customize_toolbar_category_menu">غوره‌نۍ</string>
   <string name="customize_toolbar_drag_and_drop_placeholder">خواپوري توکي مو دلته راکش او خوشې کړئ 👋</string>
   <string name="customize_toolbar_reset_to_default_button">تلواليزه ته بېرته‌اوڼل</string>
+  <string name="suggested_edits_activity_title">سمول</string>
   <string name="suggested_edits_describe_articles">ليکنې څرگنداوی‌کول</string>
   <string name="suggested_edits_caption_images">نيونگ انځورونه</string>
   <string name="suggested_edits_tag_images">نښلن انځورونه</string>
@@ -777,6 +828,8 @@
   <string name="suggested_edits_image_tags_published_list">خپاره‌شوي نښلنونه</string>
   <string name="suggested_edits_image_tags_search">نښنلنونه پلټل</string>
   <string name="suggested_edits_image_tags_add_tag">نښلن ورگډول</string>
+  <string name="suggested_edits_editing_tips_link_text">د سمون لارښوونې او چلونه</string>
+  <string name="suggested_edits_help_page_link_text">وړانديز شوو سمونونو لارښود مخ</string>
   <string name="suggested_edits_edit_streak_label_text">سمون لړۍ</string>
   <string name="suggested_edits_views_label_text">کتنې</string>
   <string name="suggested_edits_quality_label_text">سمون څرنگوالی</string>
@@ -801,6 +854,8 @@
     <item quantity="one">%d ورځ</item>
     <item quantity="other">%d ورځې</item>
   </plurals>
+  <string name="suggested_edits_what_is_title">وړانديزشوي سمونونه څه دي؟</string>
+  <string name="suggested_edits_what_is_text">وړاندیز شوي سمونونه په ويکيپېډيا کې د کوچنیو خو ارزښتمنو ونډو لپاره فرصتونه وړاندې کوي.</string>
   <string name="suggested_edits_learn_more">نور زده کړئ</string>
   <string name="suggested_edits_paused_title">درول‌شوی</string>
   <string name="suggested_edits_disabled_title">ناچارن‌شوی</string>
@@ -808,15 +863,24 @@
   <string name="suggested_edits_last_edited">وروستی ځل سم‌شوی</string>
   <string name="suggested_edits_last_edited_never">هېڅکله</string>
   <string name="suggested_edits_task_new">نوی</string>
+  <string name="suggested_edits_cc0_notice">خپرولو سره، تاسو له &lt;a href=\"%1$s\"&gt; کارولو منښتونه&lt;/a&gt; منئ او د &lt;a href=\"%2$s\"&gt;CC0 منښتليک&lt;/a&gt; لاندې خپلې ونډې په نه بدلېدونکي ډول خپروئ.</string>
   <string name="suggested_edits_reactivation_notification_title">وړاندیز شوي سمونونه</string>
   <string name="suggested_edits_reactivation_notification_stage_one">مننه چې په ويکيپېډيا کې سمون کوئ! ولې يې له هغه ځايه نه پيلوئ په کوم ځای چې تاسو پرېښی و؟</string>
+  <string name="suggested_edits_reactivation_notification_stage_two">د ويکيپېډيا ښه‌والي لپاره يوه دقيقه وخت لرئ؟ د دې سمون وړانديزونو سم‌کتنه وکړئ.</string>
+  <string name="suggested_edits_contributions_screen_title">%s ونډې</string>
   <string name="suggested_edits_contribution_language_label">ژبه</string>
   <string name="suggested_edits_contribution_date_time_label">نېټه / وخت</string>
   <string name="suggested_edits_contribution_type_label">ونډې ډول</string>
   <string name="suggested_edits_contribution_image_label">انځور</string>
   <string name="suggested_edits_contribution_article_label">ليکنه</string>
   <string name="suggested_edits_contribution_views">کتنې %s</string>
+  <string name="suggested_edits_contribution_seen_text">په تېرو ۳۹ ورځو کې %s ځله ليدل‌شوی.</string>
+  <plurals name="suggested_edits_image_tag_contribution_label">
+    <item quantity="one">تاسو %d نښلن ورگډ کړ</item>
+    <item quantity="other"> تاسو %d نښانونه ورگډ کړل</item>
+  </plurals>
   <string name="suggested_edits_contribution_date_yesterday_text">پرون</string>
+  <string name="suggested_edits_encourage_account_creation_title">ايا تاسو پوهېدئ چې هرڅوک ويکيپېډيا سمولای شي.</string>
   <string name="suggested_edits_encourage_account_creation_login_button">ننوتل/ويکيپېډيا سره يو ځای کېدل</string>
   <string name="suggested_edits_contribution_type_image_tag">انځور نښلن</string>
   <string name="suggested_edits_contribution_current_revision_text">ستاسو سمون وسمهال په ويکيپېډيا کې دی</string>
@@ -868,6 +932,61 @@
   <string name="edit_summary_added_caption">ورگډشوی نيونگ</string>
   <string name="edit_summary_added_image_and_caption">ورگډشوی انځور او نيونگ</string>
   <string name="edit_published_view">کتل</string>
+  <string name="activity_tab_donation_unknown">ناجوت</string>
+  <string name="activity_tab_donation_last_donation">په کاريال کې &lt;b&gt;وروستۍ بسپنه&lt;/b&gt;</string>
+  <string name="activity_tab_game_stats">لوبې شمارنې</string>
+  <string name="activity_tab_play_wiki_games">ويکي‌لوبې لوبول</string>
+  <string name="activity_tab_menu_feedback">د غوني ستونزه</string>
+  <string name="activity_tab_menu_info">نور مالومات</string>
+  <string name="activity_tab_menu_customize">دوديزول</string>
+  <string name="activity_tab_highlights">مهم ټکي</string>
+  <string name="activity_tab_customize_screen_reading_history_switch_title">لوستلو پېښليک</string>
+  <string name="activity_tab_impact">ستاسو اغېز</string>
+  <string name="activity_tab_impact_most_viewed">ستاسو د سمون راهيسی ډېر ليدل‌شوي</string>
+  <string name="activity_tab_impact_contributions_this_month">ونډې دې مياشت کې</string>
+  <plurals name="activity_tab_impact_edits_this_month">
+    <item quantity="one">سمون دا مياشت</item>
+    <item quantity="other">سمونونه دا مياشت</item>
+  </plurals>
+  <plurals name="activity_tab_impact_edits_last_month">
+    <item quantity="one">سمون تېره مياشت</item>
+    <item quantity="other">سمونونه تېره مياشت</item>
+  </plurals>
+  <string name="activity_tab_impact_all_time">ټول وخت اغېز</string>
+  <plurals name="activity_tab_impact_total_edits">
+    <item quantity="one">ټولټال سمون</item>
+    <item quantity="other">ټولټال سمونونه</item>
+  </plurals>
+  <plurals name="activity_tab_impact_thanks">
+    <item quantity="one">مننه</item>
+    <item quantity="other">مننې</item>
+  </plurals>
+  <plurals name="activity_tab_impact_best_streak_text">
+    <item quantity="one">%d ورځ</item>
+    <item quantity="other">%d ورځې</item>
+  </plurals>
+  <string name="activity_tab_impact_best_streak">غوره لړۍ</string>
+  <string name="activity_tab_impact_last_edited">وروستی ځل سم‌شوی</string>
+  <string name="activity_tab_impact_suggested_edits_title">په دې وروستيو کې په ليکنو کې ۰ سمونونه</string>
+  <string name="activity_tab_impact_suggested_edits_button">يو سمون کول</string>
+  <string name="activity_tab_impact_recent_activity">ستاسو وروستۍ چارې (وروستۍ ۳۰ ورځې)</string>
+  <plurals name="activity_tab_impact_recent_activity_edits">
+    <item quantity="one">سمون</item>
+    <item quantity="other">سمونونه</item>
+  </plurals>
+  <plurals name="activity_tab_impact_recent_activity_views">
+    <item quantity="one">ستاسو سم‌کړو ليکنو کتنه</item>
+    <item quantity="other">ستاسو سم‌کړو ليکنو کتنې</item>
+  </plurals>
+  <string name="activity_tab_customize_screen_time_spent_switch_title">په لوستلو تېرشوی وخت</string>
+  <string name="activity_tab_customize_screen_impact_switch_title">ټول وخت اغېز</string>
+  <string name="activity_tab_customize_screen_games_switch_title">لوبې شمارنې</string>
+  <string name="activity_tab_customize_screen_timeline_switch_title">د چلند مهالوېش</string>
+  <string name="activity_tab_timeline_today">نن</string>
+  <string name="activity_tab_timeline_yesterday">پرون</string>
+  <string name="activity_tab_timeline_empty_state_title">ښودلو لپاره څه نشته</string>
+  <string name="activity_tab_timeline_view_changes_button">بدلونونه کتل</string>
+  <string name="activity_tab_onboarding_reading_patterns_title">د لوستلو نمونې</string>
   <string name="file_page_activity_title">د دوتنې مخ</string>
   <string name="file_page_add_image_caption_button">انځور نيونگ ورگډول</string>
   <string name="file_page_add_image_tags_button">انځور نښلنونه ورگډول</string>
@@ -1260,6 +1379,7 @@
   <string name="patroller_tasks_filters_user_intent_may_problems">ښايي بدنيت وي</string>
   <string name="patroller_tasks_filters_user_intent_likely_problems">ښايي بدنيت وي</string>
   <string name="patroller_tasks_filters_user_intent_bad">ښايي ډېر بدنيت وي</string>
+  <string name="patroller_tasks_filters_empty_search_message">د نورو سمونونو کتلو لپاره د %s لرې‌کولو هڅه کول</string>
   <string name="patroller_tasks_patrol_edit_overflow_edit_history">د ليکنې سمون پېښليک</string>
   <string name="patroller_tasks_patrol_edit_undo_success">په‌څټ‌گرځول بشپړ شول</string>
   <string name="patroller_tasks_patrol_edit_rollback_dialog_title">ايا تاسو ډاډه ياست چې شاگرځ وکړئ؟</string>
@@ -1289,6 +1409,7 @@
   <string name="page_issues_title">مخ ستونزې</string>
   <string name="donation_campaign_go_back_button">پر شا تلل</string>
   <string name="menu_single_webview_open_external">د غونډال ښوونگر کې پرانېستل</string>
+  <string name="donate_gpay_dialog_title">گوگل پی سره بسپنه کول غواړئ!</string>
   <string name="donate_gpay_help_problems">د بسپنه ورکولو ستونزې؟</string>
   <string name="donate_gpay_help_other_ways">د ورکولو نورې لارې</string>
   <string name="donate_gpay_help_faq">ډېر ځليزې پوښتنې</string>
@@ -1370,13 +1491,15 @@
   <string name="on_this_day_game_notification_undo">ناکړل</string>
   <string name="on_this_day_game_share_screen_subtitle">رانغاړل‌شوې سکالوگانې:</string>
   <string name="on_this_day_game_archive_calendar_title">د لوبولو لپاره د نېټې له مخې يوه خوښه کړئ.</string>
+  <string name="on_this_day_game_archive_btn_text">خونديځ غږول</string>
+  <string name="on_this_day_game_review_results_btn_text">پايلو بياکتنه</string>
   <string name="on_this_day_game_continue_playing_btn_text">لوبولو ته دوام‌‌ورکول</string>
   <string name="on_this_day_game_sound_on">غږ بلول</string>
   <string name="on_this_day_game_sound_off">غږ گولول</string>
-  <string name="year_in_review_learn_more">نور زده‌کول</string>
-  <string name="year_in_review_get_started">پيلول</string>
+  <string name="year_in_review_learn_more" fuzzy="true">نور زده‌کول</string>
+  <string name="year_in_review_get_started" fuzzy="true">پيلول</string>
   <string name="year_in_review_topbar_w_icon">ويکيپېډيا W نښه</string>
-  <string name="year_in_review_navigate_left">کيڼ لوري گرځښت</string>
+  <string name="year_in_review_navigate_left" fuzzy="true">کيڼ لوري گرځښت</string>
   <string name="year_in_review_share_icon">نښه وېشل</string>
   <string name="year_in_review_heart_icon">زړه نښه</string>
   <string name="year_in_review_navigate_right">ښي لوري ته گرځښت</string>
@@ -1393,11 +1516,16 @@
   <string name="year_in_review_survey_placeholder_text">کوم زياتي اندونه لرئ؟</string>
   <string name="year_in_review_survey_cancel">ناگارل</string>
   <string name="year_in_review_survey_submit">سپارل</string>
+  <string name="year_in_review_globe_icon" fuzzy="true">نړۍ نښه</string>
   <string name="recommended_reading_list_title">موندل</string>
   <string name="recommended_reading_list_onboarding_card_title">ستاسو لپاره غوره‌شوې ليکنې ومومئ</string>
   <string name="recommended_reading_list_onboarding_card_new">نوی!</string>
   <string name="recommended_reading_list_onboarding_card_positive_button">پيلول</string>
   <string name="recommended_reading_list_onboarding_card_negative_button">نه مننه</string>
+  <string name="recommended_reading_list_interest_source_interests">پرېږده چې د خپلو گټو له مخې يې خوښ کړم</string>
+  <string name="recommended_reading_list_interest_source_saved">زما د خوندي‌شوو ليکنو پربنسټ يې راته خوښ کړئ</string>
+  <string name="recommended_reading_list_interest_source_history">زما د لوست پېښليک پربنسټ يې راته خوښ کړئ</string>
+  <string name="recommended_reading_list_interest_pick_title">تاسو د څه لېوال ياست؟</string>
   <string name="recommended_reading_list_interest_pick_search_hint">د يوې ليکنې پلټل</string>
   <plurals name="recommended_reading_list_interest_pick_selected_articles">
     <item quantity="one">%d غوره‌شوی</item>
@@ -1419,6 +1547,7 @@
   </plurals>
   <string name="recommended_reading_list_page_overflow_customize">دوديزول</string>
   <string name="recommended_reading_list_page_overflow_about">د دې ځانگړنې په‌اړه</string>
+  <string name="recommended_reading_list_page_snackbar_action">دوديزه موندل</string>
   <string name="recommended_reading_list_page_snackbar_day">ورځ</string>
   <string name="recommended_reading_list_page_snackbar_week">اوونۍ</string>
   <string name="recommended_reading_list_page_snackbar_month">مياشت</string>
@@ -1426,6 +1555,7 @@
   <string name="recommended_reading_list_settings_title">موندلو اوڼنې</string>
   <string name="recommended_reading_list_settings_toggle">لوستلړ موندل</string>
   <string name="recommended_reading_list_settings_turn_off_dialog_positive_button">گولول</string>
+  <string name="recommended_reading_list_settings_turn_off_dialog_negative_button">نه، بل يې وساتئ</string>
   <string name="recommended_reading_list_settings_articles">ليکنې</string>
   <string name="recommended_reading_list_settings_updates_frequency">%s هم‌مهالونې</string>
   <string name="recommended_reading_list_settings_updates_frequency_daily">ورځنی</string>
@@ -1434,14 +1564,44 @@
   <string name="recommended_reading_list_settings_updates_frequency_dialog_daily">هره ورځ</string>
   <string name="recommended_reading_list_settings_updates_frequency_dialog_weekly">هره اوونۍ</string>
   <string name="recommended_reading_list_settings_updates_frequency_dialog_monthly">هره مياشت</string>
+  <string name="recommended_reading_list_settings_updates_base_subtitle_interests">ستاسو د خوښو پربنسټ</string>
+  <string name="recommended_reading_list_settings_updates_base_subtitle_saved">ستاسو د خوندي‌شوو ليکنو پر بنسټ</string>
+  <string name="recommended_reading_list_settings_updates_base_subtitle_history">ستاسو د لوست پېښليک پر بنسټ</string>
+  <string name="recommended_reading_list_settings_updates_base_dialog_positive_button">ترتيبول</string>
+  <string name="recommended_reading_list_settings_updates_base_dialog_negative_button">پروا نه لري</string>
+  <string name="recommended_reading_list_settings_updates_base_snackbar_interests">ستاسو وړانديزونه اوس ستاسو لېوالتياوې پورې اړه لري.</string>
   <string name="recommended_reading_list_settings_updates_base_snackbar_action">ناکړل</string>
   <string name="recommended_reading_list_settings_interests">لېوالتياوې</string>
   <string name="recommended_reading_list_settings_notifications_title">خبرتياوې</string>
+  <string name="recommended_reading_list_settings_notifications_dialog_title">خبرتياوې گولې کړي؟</string>
   <string name="recommended_reading_list_settings_notifications_dialog_positive_button">دوی بندول</string>
+  <string name="recommended_reading_list_settings_notifications_dialog_negative_button">نه، بل يې وساتئ</string>
   <string name="donation_reminders_initial_prompt_label">ازمېښتي</string>
+  <string name="donation_reminders_initial_prompt_title">د ويکيپېډيا ملاتړ کول لکه څنگه يې چې لولئ</string>
+  <string name="donation_reminders_initial_prompt_positive_button">پيلول</string>
+  <string name="donation_reminders_initial_prompt_negative_button">اوس نه</string>
+  <string name="donation_reminders_prompt_dismiss_snackbar">د بسپنې يادونې هروخت په اوڼنو کې بدلېدلای شي.</string>
   <string name="donation_settings_section_header">بسپنې</string>
+  <string name="donation_reminders_settings_title">د بسپنې يادونې</string>
+  <string name="donation_reminders_settings_article_frequency_label">کله چې ما لوستل</string>
   <string name="donation_reminders_settings_amount_label">د بسپنې ورکولو يادونه راته وکړه</string>
+  <string name="donation_reminders_settings_confirm_btn_label">يادگر تاييدول</string>
+  <string name="donation_reminders_settings_about_experiment_btn_label">د دې ازمېښت په‌اړه</string>
   <string name="donation_reminders_settings_article_frequency_input_suffix_label">ليکنې</string>
+  <string name="donation_reminders_settings_warning_min_amount">مهرباني وکړئ لږترلږه %s دننه کړئ</string>
+  <string name="donation_reminders_settings_warning_max_amount">ډېر تر ډېره %s اجازه لري</string>
+  <string name="donation_reminders_settings_option_custom">دوديز...</string>
   <string name="donation_reminders_prompt_positive_button">اوس بسپنه ورکول</string>
   <string name="donation_reminders_prompt_negative_button">اوس نه</string>
+  <string name="donation_reminders_gpay_text">له گوگل پی سره %s  بسپنه‌ورکول</string>
+  <string name="donation_reminders_gpay_different_amount_text">له گوگل پی سره يو توپيري رقم بسپنه ورکول</string>
+  <string name="donation_reminders_survey_dialog_title">د بسپنې يادوونکي ښه کولو کې مرسته وکړئ.</string>
+  <string name="donation_reminders_survey_dialog_message">ايا تاسو له دې ازمېښته خوښ ياست؟</string>
+  <string name="donation_reminders_settings_description_on">د بسپنې يادونې بلې دي. ويکيپېډيا به تاسو ته درياد کړي چې د دې ازمېښت پرمهال د هر %2$s لوستلو وروسته %1$s بسپنه ورکړئ.</string>
+  <string name="donation_reminders_settings_description_off">د بسپنې يادونې گولې دي.</string>
+  <string name="donation_reminders_settings_tooltip_info_label">ليکنې شمېر په ځايي توگه ستاسو سولگر کې ساتل‌شوی</string>
+  <plurals name="donation_reminders_text_articles">
+    <item quantity="one">%d ليکنه</item>
+    <item quantity="other">%d ليکنې</item>
+  </plurals>
 </resources>

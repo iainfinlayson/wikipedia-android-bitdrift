@@ -62,6 +62,7 @@
   <string name="search_icon_content_description">Zoeken</string>
   <string name="filter_hint_filter_my_lists_and_articles">Filter mijn lijsten</string>
   <string name="nav_item_suggested_edits">Bewerkingen</string>
+  <string name="nav_item_activity">Activiteit</string>
   <string name="nav_item_more">Meer</string>
   <string name="nav_item_search">Zoeken</string>
   <string name="nav_item_contribute">Bijdragen</string>
@@ -74,7 +75,7 @@
   <string name="page_error_back_to_main">Terug</string>
   <string name="error_back">Terug</string>
   <string name="error_next">Volgende</string>
-  <string name="menu_clear_all_history">Geschiedenis wissen</string>
+  <string name="menu_clear_all_history">Leesgeschiedenis wissen</string>
   <string name="history_item_deleted">%s uit geschiedenis verwijderd</string>
   <string name="history_items_deleted">%d artikelen uit geschiedenis verwijderd</string>
   <string name="history_item_delete_undo">Ongedaan maken</string>
@@ -87,7 +88,7 @@
   <string name="wikimedia_commons">Wikimedia Commons</string>
   <string name="wikidata">Wikidata</string>
   <string name="dialog_title_clear_history">Browsergeschiedenis wissen</string>
-  <string name="dialog_message_clear_history">Hierdoor wordt uw volledige browsergeschiedenis gewist en worden alle huidige open tabbladen gesloten. Weet u het zeker?</string>
+  <string name="dialog_message_clear_history">Hierdoor wordt uw volledige browsergeschiedenis gewist. Weet u het zeker?</string>
   <string name="dialog_message_clear_history_yes">Ja</string>
   <string name="dialog_message_clear_history_no">Nee</string>
   <string name="share_via">Delen via</string>
@@ -216,8 +217,8 @@
   <string name="logged_out_in_background_login">Aanmelden</string>
   <string name="logged_out_in_background_cancel">Annuleren</string>
   <string name="account_vanish_request_title">Account laten verdwijnen</string>
-  <string name="account_vanish_request_confirm_title">Waarschuwing verwijdering account</string>
-  <string name="account_vanish_request_confirm">Accountverwijdering is een &lt;b&gt;laatste redmiddel&lt;/b&gt; en moet &lt;b&gt;alleen worden gebruikt als u voor altijd wilt stoppen met bewerken&lt;/b&gt; en om zoveel mogelijk van uw vroegere relaties te verbergen.&lt;br/&gt;&lt;br/&gt;Accountverwijdering op Wikipedia gebeurt door uw accountnaam te wijzigen opdat anderen uw bijdragen niet meer kunnen herkennen. De procedure wordt accountwijziging genoemd. &lt;b&gt;Door de wijziging wordt geen volledige anonimiteit gegarandeerd en worden geen bijdragen aan de projecten verwijderd.&lt;/b&gt;</string>
+  <string name="account_vanish_request_confirm_title">Waarschuwing verdwijnen account</string>
+  <string name="account_vanish_request_confirm">Verdwijnen is een &lt;b&gt;laatste redmiddel&lt;/b&gt; en moet &lt;b&gt;alleen worden gebruikt als u voor altijd wilt stoppen met bewerken&lt;/b&gt; en ook om zoveel mogelijk van uw vroegere relaties te verbergen.&lt;br/&gt;&lt;br/&gt;Accountverwijdering op Wikipedia gebeurt door uw accountnaam te wijzigen zodat anderen uw bijdragen niet kunnen herkennen. Deze procedure wordt accountverdwijning genoemd. &lt;b&gt;Door het verdwijnen wordt geen volledige anonimiteit gegarandeerd en worden geen bijdragen aan de projecten verwijderd.&lt;/b&gt;</string>
   <string name="history_empty_title">Geen recent bekeken artikelen</string>
   <string name="history_empty_message">Blijf hier op de hoogte van wat u hebt gelezen.</string>
   <string name="history_offline_articles_toast">Sommige artikelen in de geschiedenis zijn mogelijk niet offline zichtbaar.</string>
@@ -226,10 +227,10 @@
   <string name="delete_selected_items">Geselecteerde items verwijderen</string>
   <string name="wp_stylized">&lt;big&gt;W&lt;/big&gt;IKIPEDI&lt;big&gt;A&lt;/big&gt;</string>
   <string name="create_account_username_hint">Gebruikersnaam</string>
-  <string name="login_dont_have_account">Heeft u geen account?</string>
+  <string name="login_dont_have_account">Hebt u geen account?</string>
   <string name="login_join_wikipedia">Account aanmaken bij Wikipedia</string>
   <string name="login_forgot_password">Wachtwoord vergeten?</string>
-  <string name="create_account_already_have">Heeft u al een account?</string>
+  <string name="create_account_already_have">Hebt u al een account?</string>
   <string name="create_account_activity_title">Account aanmaken</string>
   <string name="dialog_create_account_checking_progress">Aan het controleren</string>
   <string name="create_account_email_hint">E-mailadres (optioneel)</string>
@@ -285,10 +286,7 @@
   <string name="terms_of_use_description">Gebruiksvoorwaarden</string>
   <string name="about_wikipedia_url">https://nl.wikipedia.org/wiki/Help:Unieke_van_Wikipedia</string>
   <string name="privacy_policy_url">https://foundation.wikimedia.org/wiki/Special:MyLanguage/Privacy_policy</string>
-  <string name="offline_reading_and_data_url">https://www.mediawiki.org/wiki/Special:MyLanguage/Wikimedia_Apps/Android_FAQ#Offline_reading_and_data</string>
-  <string name="android_app_faq_url">https://www.mediawiki.org/wiki/Special:MyLanguage/Wikimedia_Apps/Android_FAQ</string>
   <string name="terms_of_use_url">https://foundation.wikimedia.org/wiki/Special:MyLanguage/Terms_of_Use</string>
-  <string name="android_app_request_an_account_url">https://en.wikipedia.org/wiki/Wikipedia:Request_an_account</string>
   <string name="cc_by_sa_4_url">https://creativecommons.org/licenses/by-sa/4.0/deed.nl</string>
   <string name="cc_0_url">https://creativecommons.org/publicdomain/zero/1.0/deed.nl</string>
   <string name="about_libraries_heading">Gebruikte bibliotheken</string>
@@ -964,6 +962,7 @@
   <string name="customize_toolbar_reset_to_default_button">Reset naar standaard</string>
   <string name="customize_toolbar_item_drag_handle_default_tooltip">Houd het sleeppictogram ingedrukt om het item te verplaatsen</string>
   <string name="customize_toolbar_item_default_tooltip">Druk op een item en sleep het om het te verplaatsen</string>
+  <string name="suggested_edits_activity_title">Bewerken</string>
   <string name="suggested_edits_describe_articles">Beschrijf artikelen</string>
   <string name="suggested_edits_caption_images">Bijschrift afbeeldingen</string>
   <string name="suggested_edits_tag_images">Afbeeldingen labelen</string>
@@ -1176,6 +1175,91 @@
   <string name="edit_summary_added_caption">Toegevoegd bijschrift</string>
   <string name="edit_summary_added_image_and_caption">Afbeelding en bijschrift toegevoegd</string>
   <string name="edit_published_view">Bekijken</string>
+  <string name="activity_tab_logged_out_title">Meld u aan of maak een account aan om uw activiteit in de Wikipedia-app te bekijken</string>
+  <string name="activity_tab_user_reading">Wat %s leest</string>
+  <string name="activity_tab_on_wikipedia_android">Op Wikipedia Android</string>
+  <string name="activity_tab_weekly_time_spent_hm">%1$du %2$dm</string>
+  <string name="activity_tab_weekly_time_spent">Tijd besteed aan lezen deze week</string>
+  <string name="activity_tab_monthly_articles_read">Artikelen gelezen deze maand</string>
+  <string name="activity_tab_monthly_articles_saved">Artikelen opgeslagen deze maand</string>
+  <string name="activity_tab_monthly_top_categories">Meest gelezen categorieën deze maand</string>
+  <string name="activity_tab_explore_wikipedia">Ontdek via Wikipedia</string>
+  <string name="activity_tab_discover_encourage">Op zoek naar iets nieuws om te lezen?</string>
+  <string name="activity_tab_donation_unknown">Onbekend</string>
+  <string name="activity_tab_donation_last_donation">&lt;b&gt;Laatste donatie&lt;/b&gt; in de app</string>
+  <string name="activity_tab_game_stats">Spelstatistieken</string>
+  <string name="activity_tab_game_stats_best_streak">Beste reeks</string>
+  <string name="activity_tab_play_wiki_games">Speel WikiGames</string>
+  <string name="activity_tab_report_email_subject">Probleemmelding, tabblad Activiteit</string>
+  <string name="activity_tab_report_email_body">Ik heb een probleem ondervonden met het tabblad Activiteit:\n- [Beschrijf het specifieke probleem]\n\nHet gedrag dat ik graag zou zien is:\n- [Beschrijf de voorgestelde oplossing]</string>
+  <string name="activity_tab_menu_feedback">Probleem met functie</string>
+  <string name="activity_tab_menu_info">Meer lezen</string>
+  <string name="activity_tab_menu_customize">Aanpassen</string>
+  <string name="activity_tab_menu_customize_description">De inzichten in het tabblad Activiteit zijn gebaseerd op de primaire taal die is aangegeven in de instellingen. Ze maken gebruik van lokale gegevens, met uitzondering van bewerkingen die openbaar zijn.</string>
+  <string name="activity_tab_highlights">Hoogtepunten</string>
+  <string name="activity_tab_customize_screen_reading_history_switch_title">Leesgeschiedenis</string>
+  <string name="activity_tab_impact">Uw impact</string>
+  <string name="activity_tab_impact_most_viewed">Meest bekeken sinds uw bewerking</string>
+  <string name="activity_tab_impact_contributions_this_month">Bijdragen deze maand</string>
+  <plurals name="activity_tab_impact_edits_this_month">
+    <item quantity="one">bewerking deze maand</item>
+    <item quantity="other">bewerkingen deze maand</item>
+  </plurals>
+  <plurals name="activity_tab_impact_edits_last_month">
+    <item quantity="one">bewerking vorige maand</item>
+    <item quantity="other">bewerkingen vorige maand</item>
+  </plurals>
+  <string name="activity_tab_impact_all_time">Impact van alle tijden</string>
+  <plurals name="activity_tab_impact_total_edits">
+    <item quantity="one">bewerking in totaal</item>
+    <item quantity="other">bewerkingen in totaal</item>
+  </plurals>
+  <plurals name="activity_tab_impact_thanks">
+    <item quantity="one">bedankje</item>
+    <item quantity="other">bedankjes</item>
+  </plurals>
+  <plurals name="activity_tab_impact_best_streak_text">
+    <item quantity="one">%d dag</item>
+    <item quantity="other">%d dagen</item>
+  </plurals>
+  <string name="activity_tab_impact_best_streak">Beste reeks</string>
+  <string name="activity_tab_impact_last_edited">Laatst bewerkt</string>
+  <string name="activity_tab_impact_suggested_edits_title">0 recente bewerkingen van artikelen</string>
+  <string name="activity_tab_impact_suggested_edits_message">Het lijkt erop dat u deze maand nog geen bewerking hebt aangebracht. Breid de vrije kennis uit door de onderwerpen te bewerken die u interesseren.</string>
+  <string name="activity_tab_impact_suggested_edits_button">Een bewerking maken</string>
+  <string name="activity_tab_impact_recent_activity">Uw recente activiteit (afgelopen 30 dagen)</string>
+  <plurals name="activity_tab_impact_recent_activity_edits">
+    <item quantity="one">Bewerking</item>
+    <item quantity="other">Bewerkingen</item>
+  </plurals>
+  <plurals name="activity_tab_impact_recent_activity_views">
+    <item quantity="one">Weergave van een artikel dat u hebt bewerkt</item>
+    <item quantity="other">Weergaven van artikelen die u hebt bewerkt</item>
+  </plurals>
+  <string name="activity_tab_customize_screen_time_spent_switch_title">Tijd besteed aan lezen</string>
+  <string name="activity_tab_customize_screen_reading_insights_switch_title">Leesinzichten</string>
+  <string name="activity_tab_customize_screen_editing_insights_switch_title">Bewerkingsinzichten</string>
+  <string name="activity_tab_customize_screen_impact_switch_title">Impact van alle tijden</string>
+  <string name="activity_tab_customize_screen_games_switch_title">Spelstatistieken</string>
+  <string name="activity_tab_customize_screen_donations_switch_title">Laatste donatie in de app</string>
+  <string name="activity_tab_customize_screen_timeline_switch_title">Gedragstijdlijn</string>
+  <string name="activity_tab_customize_screen_no_modules_message">De activiteitsmodules zijn uitgeschakeld. &lt;a href=\"#\"&gt;Schakel ze in&lt;/a&gt; om op dit tabblad berichten te zien.</string>
+  <string name="activity_tab_timeline_today">Vandaag</string>
+  <string name="activity_tab_timeline_yesterday">Gisteren</string>
+  <string name="activity_tab_timeline_empty_state_title">Niets te laten zien</string>
+  <string name="activity_tab_timeline_empty_state_message">Begin met lezen en bewerken om uw geschiedenis op te bouwen</string>
+  <string name="activity_tab_timeline_view_changes_button">Wijzigingen bekijken</string>
+  <string name="activity_tab_onboarding_reading_patterns_title">Leespatronen</string>
+  <string name="activity_tab_onboarding_reading_patterns_message">Kijk hoeveel tijd u hebt doorgebracht met lezen en welke artikelen of onderwerpen u in de loop van de tijd hebt verkend.</string>
+  <string name="activity_tab_onboarding_screen_title">Inleiding tot Activiteit</string>
+  <string name="activity_tab_onboarding_impact_title">Uw invloed</string>
+  <string name="activity_tab_onboarding_impact_message">Bekijk een overzicht van uw bijdragen en ontdek hoe ver de kennis die u hebt gedeeld al reikt.</string>
+  <string name="activity_tab_onboarding_engage_title">Meer manieren om mee te doen</string>
+  <string name="activity_tab_onboarding_engage_message">Bekijk statistieken over spellen, opgeslagen artikelen en andere activiteiten waarmee u uw verbinding met Wikipedia verdiept.</string>
+  <string name="activity_tab_onboarding_stay_in_control_title">De touwtjes in handen houden</string>
+  <string name="activity_tab_onboarding_stay_in_control_message">Kies welke modules u wilt weergeven. Alle persoonlijke gegevens blijven privé op uw apparaat staan. U kunt uw browsergeschiedenis op elk moment wissen.</string>
+  <string name="edits_screen_what_is_title">Bewerken in de Wikipedia-app</string>
+  <string name="edits_screen_what_is_body">Weet u niet waar u moet beginnen met bewerken? Probeer dan ‘Voorgestelde bewerkingen’, een functie waarmee u kleine maar essentiële bijdragen aan Wikipedia kunt doen. U kunt ook direct naar een interessant artikel gaan en een wijziging aanbrengen met behulp van wikitekst.</string>
   <string name="file_page_activity_title">Bestandspagina</string>
   <string name="file_page_add_image_caption_button">Afbeeldingsbijschrift toevoegen</string>
   <string name="file_page_add_image_tags_button">Afbeeldingslabel toevoegen</string>
@@ -1795,40 +1879,17 @@
   <string name="on_this_day_game_continue_playing_btn_text">Doorgaan met spelen</string>
   <string name="on_this_day_game_sound_on">Geluid aanzetten</string>
   <string name="on_this_day_game_sound_off">Geluid uitzetten</string>
-  <string name="year_in_review_learn_more">Meer lezen</string>
-  <string name="year_in_review_get_started">Aan de slag</string>
+  <string name="year_in_review_learn_more" fuzzy="true">Meer lezen</string>
+  <string name="year_in_review_get_started" fuzzy="true">Aan de slag</string>
   <string name="year_in_review_topbar_w_icon">Wikipedia W-pictogram</string>
-  <string name="year_in_review_navigate_left">Naar links navigeren</string>
+  <string name="year_in_review_navigate_left" fuzzy="true">Naar links navigeren</string>
   <string name="year_in_review_share_icon">Delen-pictogram</string>
   <string name="year_in_review_heart_icon">Hartpictogram</string>
   <string name="year_in_review_navigate_right">Naar rechts navigeren</string>
   <string name="year_in_review_donate">Doneren</string>
   <string name="year_in_review_information_icon">Informatiepictogram</string>
   <string name="year_in_review_get_started_headline">Verken uw jaaroverzicht van Wikipedia</string>
-  <string name="year_in_review_get_started_bodytext">Bekijk inzichten over welke artikelen u in de Wikipedia-app leest en welke bewerkingen u hebt gemaakt. Uw leesgeschiedenis blijft beschermd. Leesinzichten worden berekend met behulp van lokaal op uw apparaat opgeslagen gegevens.</string>
-  <string name="year_in_review_entry_dialog_title">Verken uw jaaroverzicht van Wikipedia</string>
-  <string name="year_in_review_entry_dialog_bodytext">Bekijk welke artikelen we hebben gelezen en bewerkt en deel de hoogtepunten van ons jaar op Wikipedia.</string>
-  <string name="year_in_review_entry_dialog_continue">Doorgaan</string>
-  <plurals name="year_in_review_read_count_headline">
-    <item quantity="one">U hebt dit jaar %d artikel gelezen</item>
-    <item quantity="other">U hebt dit jaar %d artikelen gelezen</item>
-  </plurals>
-  <plurals name="year_in_review_read_count_bodytext">
-    <item quantity="one">Dit jaar hebt u %1$d artikel gelezen, waaronder %2$s, %3$s en %4$s. Wikipedia had meer dan 63 miljoen artikelen beschikbaar in meer dan 300 talen. U hebt zich bij miljoenen aangesloten om uw kennis uit te breiden en diverse onderwerpen te verkennen</item>
-    <item quantity="other">Dit jaar hebt u %1$d artikelen gelezen, waaronder %2$s, %3$s en %4$s. Wikipedia had meer dan 63 miljoen artikelen beschikbaar in meer dan 300 talen. U hebt zich bij miljoenen aangesloten om uw kennis uit te breiden en diverse onderwerpen te verkennen</item>
-  </plurals>
-  <plurals name="year_in_review_edit_count_headline">
-    <item quantity="one">U hebt Wikipedia %d keer bewerkt</item>
-    <item quantity="other">U hebt Wikipedia %d keer bewerkt</item>
-  </plurals>
-  <plurals name="year_in_review_edit_count_bodytext">
-    <item quantity="one">U hebt Wikipedia %d keer bewerkt. Bedankt dat u een van de vrijwillige redacteuren bent die een verschil maakt in Wikimedia-projecten over de hele wereld.</item>
-    <item quantity="other">U hebt Wikipedia %d keer bewerkt. Bedankt dat u een van de vrijwillige redacteuren bent die een verschil maakt in Wikimedia-projecten over de hele wereld.</item>
-  </plurals>
-  <string name="year_in_review_non_english_collective_readcount_headline">Wikipedia was beschikbaar in meer dan 300 talen</string>
-  <string name="year_in_review_non_english_collective_readcount_bodytext">Wikipedia had dit jaar meer dan 63 miljoen artikelen in meer dan 300 actieve talen. U hebt zich aangesloten bij miljoenen anderen om kennis uit te breiden en diverse onderwerpen te verkennen</string>
-  <string name="year_in_review_non_english_collective_editcount_headline">Bewerkers op de iOS-app hebben meer dan 452.257 bewerkingen uitgevoerd</string>
-  <string name="year_in_review_non_english_collective_editcount_bodytext">De gemeenschap van vrijwillige redacteuren van Wikipedia heeft dit jaar tot nu toe meer dan 452.257 bewerkingen gemaakt op de iOS-app. Het hart en de ziel van Wikipedia is onze wereldwijde gemeenschap van vrijwillige bijdragers, donateurs en miljarden lezers zoals u – allemaal verenigd om onbeperkte toegang tot betrouwbare informatie te delen.</string>
+  <string name="year_in_review_get_started_bodytext" fuzzy="true">Bekijk inzichten over welke artikelen u in de Wikipedia-app leest en welke bewerkingen u hebt gemaakt. Uw leesgeschiedenis blijft beschermd. Leesinzichten worden berekend met behulp van lokaal op uw apparaat opgeslagen gegevens.</string>
   <string name="year_in_review_survey_title">Help het Jaaroverzicht te verbeteren</string>
   <string name="year_in_review_survey_subtitle">Bent u tevreden over deze functie?</string>
   <string name="year_in_review_survey_very_satisfied">Erg tevreden</string>
@@ -1840,10 +1901,9 @@
   <string name="year_in_review_survey_cancel">Annuleren</string>
   <string name="year_in_review_survey_submit">Verzenden</string>
   <string name="year_in_review_screendeck_image_content_description">Beeldbron voor het paneel op het hoofdscherm van het Jaaroverzicht</string>
-  <string name="year_in_review_entry_dialog_screen_image_content_description">Beeldbron voor het inleidingsdialoogscherm Jaaroverzicht</string>
   <string name="year_in_review_screenshot_error">Kon geen schermafbeelding genereren: %s</string>
-  <string name="year_in_review_share_subject">Jaaroverzicht Afbeelding en Link</string>
-  <string name="year_in_review_globe_icon">Wereldbol-pictogram</string>
+  <string name="year_in_review_share_subject" fuzzy="true">Jaaroverzicht Afbeelding en Link</string>
+  <string name="year_in_review_globe_icon" fuzzy="true">Wereldbol-pictogram</string>
   <string name="recommended_reading_list_title">Ontdekken</string>
   <string name="recommended_reading_list_onboarding_card_title">Ontdek artikelen die speciaal voor u zijn uitgekozen</string>
   <string name="recommended_reading_list_onboarding_card_message">Uw wekelijkse leeslijst met Wikipedia-artikelen, speciaal voor u samengesteld.</string>
@@ -1943,6 +2003,7 @@
   <string name="donation_reminders_settings_article_frequency_input_suffix_label">artikelen</string>
   <string name="donation_reminders_settings_warning_min_amount">Voer minimaal %s in</string>
   <string name="donation_reminders_settings_warning_max_amount">Maximaal %s is toegestaan</string>
+  <string name="donation_reminders_settings_option_custom">Anders…</string>
   <string name="donation_reminders_snacbkbar_confirmation_label">Bedankt! We herinneren u eraan om %1$s te doneren wanneer u %2$s leest terwijl dit experiment loopt.</string>
   <string name="donation_reminders_prompt_title">U hebt %1$s gelezen sinds u %2$s hebt toegezegd</string>
   <string name="donation_reminders_prompt_message">Op %1$s vroeg u ons u eraan te herinneren te doneren na het lezen van %2$s. Als Wikipedia u %3$s aan kennis heeft gegeven, sluit u dan aan bij de 2%% van de lezers die doneren en voltooi vandaag nog uw donatie.</string>
