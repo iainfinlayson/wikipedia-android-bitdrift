@@ -39,6 +39,11 @@ import org.wikipedia.util.log.L
 import org.wikipedia.views.imageservice.CoilImageServiceLoader
 import org.wikipedia.views.imageservice.ImageService
 import java.util.UUID
+import io.bitdrift.capture.Configuration
+import io.bitdrift.capture.Capture.Logger
+import io.bitdrift.capture.providers.session.SessionStrategy
+import okhttp3.HttpUrl.Companion.toHttpUrl
+import org.wikipedia.bitdriftdev.GlobalDebugGesture
 
 class WikipediaApp : Application() {
     init {
@@ -137,6 +142,17 @@ class WikipediaApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        GlobalDebugGesture.install(this)
+
+        Logger.start(
+            // update local.properties to include BITDRIFT_API_KEY
+            apiKey = BuildConfig.BITDRIFT_API_KEY,
+            sessionStrategy = SessionStrategy.Fixed(),
+            configuration = Configuration(enableNativeCrashReporting = true),
+            // apiURL defaults to prod. Delete the following line unless you are a bitdrift employee
+            apiUrl = "https://api.bitdrift.dev".toHttpUrl()
+        )
 
         WikiSite.setDefaultBaseUrl(Prefs.mediaWikiBaseUrl)
 
