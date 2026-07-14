@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Handler
+import android.os.Process
+import android.os.UserManager
 import android.speech.RecognizerIntent
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatDelegate
@@ -12,6 +14,7 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import org.wikipedia.analytics.eventplatform.AppSessionEvent
+import org.wikipedia.analytics.eventplatform.ClientErrorEvent
 import org.wikipedia.analytics.eventplatform.EventPlatformClient
 import org.wikipedia.appshortcuts.AppShortcuts
 import org.wikipedia.auth.AccountUtil
@@ -38,15 +41,13 @@ import org.wikipedia.util.ReleaseUtil
 import org.wikipedia.util.log.L
 import org.wikipedia.views.imageservice.CoilImageServiceLoader
 import org.wikipedia.views.imageservice.ImageService
-import java.util.UUID
-import io.bitdrift.capture.Configuration
 import io.bitdrift.capture.Capture.Logger
 import io.bitdrift.capture.providers.session.SessionStrategy
-import okhttp3.HttpUrl.Companion.toHttpUrl
+import kotlin.time.TimeSource
+import java.util.UUID
 import org.wikipedia.bitdriftdev.GlobalDebugGesture
 
 class WikipediaApp : Application() {
-
     init {
         instance = this
     }
@@ -144,13 +145,23 @@ class WikipediaApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        // The system WebView's sandboxed renderer can get bound to the app and run onCreate()
+        // in an isolated process, where UserManager (and thus SharedPreferences) is not available.
+        // In such a case, there's no point continuing initialization.
+        if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && Process.isIsolated()) ||
+            getSystemService(UserManager::class.java) == null) {
+            return
+        }
+
         GlobalDebugGesture.install(this)
 
         Logger.start(
             // update local.properties to include BITDRIFT_API_KEY
             apiKey = BuildConfig.BITDRIFT_API_KEY,
-            sessionStrategy = SessionStrategy.Fixed()
+            sessionStrategy = SessionStrategy.Fixed(),
         )
+        Logger.setEntityId("demo")
+        appStartTime = TimeSource.Monotonic.markNow()
 
         WikiSite.setDefaultBaseUrl(Prefs.mediaWikiBaseUrl)
 
@@ -216,13 +227,9 @@ class WikipediaApp : Application() {
         }
     }
 
-    fun putCrashReportProperty(key: String?, value: String?) {
-        // TODO: add custom properties to crash report
-    }
-
-    fun logCrashManually(throwable: Throwable) {
+    fun logError(throwable: Throwable) {
         L.e(throwable)
-        // TODO: send exception to custom crash reporting system
+        ClientErrorEvent().logError(throwable)
     }
 
     fun commitTabState() {
@@ -268,6 +275,7 @@ class WikipediaApp : Application() {
         AccountUtil.removeAccount()
         Prefs.isPushNotificationTokenSubscribed = false
         Prefs.pushNotificationTokenOld = ""
+        Prefs.lastBackgroundLoginDateTime = ""
         Prefs.tempAccountWelcomeShown = false
         Prefs.tempAccountCreateDay = 0L
         Prefs.tempAccountDialogShown = false
@@ -309,5 +317,6 @@ class WikipediaApp : Application() {
     companion object {
         lateinit var instance: WikipediaApp
             private set
+        var appStartTime: TimeSource.Monotonic.ValueTimeMark? = null
     }
 }
