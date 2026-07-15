@@ -213,6 +213,8 @@ dependencies {
     implementation libs.work.runtime.ktx
     implementation libs.hcaptcha
 
+    // Required for bitdrift's automatic WebView instrumentation (WebViewFeature/WebViewCompat checks).
+    implementation libs.webkit
     implementation libs.bitdrift.capture
 
     implementation libs.okhttp.tls
@@ -334,5 +336,6 @@ private static Properties loadProperties(File file) {
 bitdrift {
     instrumentation {
         automaticOkHttpInstrumentation = true
+        automaticWebViewInstrumentation = true
     }
 }

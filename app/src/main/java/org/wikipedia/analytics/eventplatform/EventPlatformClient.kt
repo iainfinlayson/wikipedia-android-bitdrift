@@ -14,12 +14,16 @@ import org.wikimedia.testkitchen.config.StreamConfig
 import org.wikimedia.testkitchen.config.sampling.SampleConfig
 import io.bitdrift.capture.Capture.Logger
 import io.bitdrift.capture.LogLevel
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.contentOrNull
+import kotlinx.serialization.json.jsonObject
 import org.wikipedia.BuildConfig
 import org.wikipedia.WikipediaApp
 import org.wikipedia.analytics.testkitchen.TestKitchenAdapter
 import org.wikipedia.dataclient.ServiceFactory
 import org.wikipedia.dataclient.WikiSite
 import org.wikipedia.dataclient.okhttp.HttpStatusException
+import org.wikipedia.json.JsonUtil
 import org.wikipedia.settings.Prefs
 import org.wikipedia.util.ReleaseUtil
 import org.wikipedia.util.log.L
@@ -80,10 +84,7 @@ object EventPlatformClient {
      * @param event event
      */
     fun submit(event: Event) {
-        Logger.log(LogLevel.INFO, fields = mapOf(
-            "event_stream" to event.stream,
-            "event_type" to event::class.simpleName.orEmpty()
-        )) { "analytics_event" }
+        logToCapture(event)
         if (STREAM_CONFIGS.isEmpty()) {
             // We haven't gotten stream configs yet, so queue up the event in our initial queue.
             synchronized(INITIAL_QUEUE) {
@@ -96,6 +97,24 @@ object EventPlatformClient {
             return
         }
         doSubmit(event)
+    }
+
+    private fun logToCapture(event: Event) {
+        val fields = try {
+            buildMap {
+                put("event_stream", event.stream)
+                put("event_type", event::class.simpleName.orEmpty())
+                JsonUtil.encodeToString(event)?.let { json ->
+                    JsonUtil.json.parseToJsonElement(json).jsonObject.forEach { (key, value) ->
+                        (value as? JsonPrimitive)?.contentOrNull?.let { put(key, it) }
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            L.w(e)
+            mapOf("event_stream" to event.stream, "event_type" to event::class.simpleName.orEmpty())
+        }
+        Logger.log(LogLevel.INFO, fields = fields) { "analytics_event" }
     }
 
     private fun doSubmit(event: Event) {
