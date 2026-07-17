@@ -9,7 +9,7 @@ import io.bitdrift.capture.Capture.Logger
 import kotlin.math.abs
 
 /**
- * Adds a one-finger long-press (~1s) listener to every Activity window.
+ * Adds a one-finger long-press (~3s) listener to every Activity window.
  * Trigger area is a bottom-right "safe corner" to avoid clashes with other long-press UI.
  * When triggered, shows a simple dialog with:
  *  - Start Slow Leak
@@ -19,7 +19,7 @@ import kotlin.math.abs
  */
 object GlobalDebugGesture : Application.ActivityLifecycleCallbacks {
 
-    private const val PRESS_MS = 1000L
+    private const val PRESS_MS = 3000L
 
     fun install(app: Application) {
         app.registerActivityLifecycleCallbacks(this)
