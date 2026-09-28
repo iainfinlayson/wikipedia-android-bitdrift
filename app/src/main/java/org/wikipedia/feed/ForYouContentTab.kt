@@ -46,10 +46,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil3.compose.SubcomposeAsyncImage
-import coil3.compose.SubcomposeAsyncImageContent
+import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
-import coil3.request.allowHardware
 import org.wikipedia.R
 import org.wikipedia.compose.ComposeColors
 import org.wikipedia.compose.components.HtmlText
@@ -62,6 +60,7 @@ import org.wikipedia.feed.continuereading.ContinueReadingModule
 import org.wikipedia.feed.discover.DiscoverArticlesModule
 import org.wikipedia.feed.discover.DiscoverEnablePromptModule
 import org.wikipedia.feed.interests.BasedOnInterestModule
+import org.wikipedia.feed.interests.NewWithinInterestModule
 import org.wikipedia.feed.model.Card
 import org.wikipedia.feed.model.DiscoverEnablePromptCard
 import org.wikipedia.feed.model.EmptyForYouCard
@@ -69,7 +68,9 @@ import org.wikipedia.feed.model.PlacesOfInterestLocationPromptCard
 import org.wikipedia.feed.places.PlacesOfInterestArticlesModule
 import org.wikipedia.feed.places.PlacesOfInterestLocationPromptModule
 import org.wikipedia.feed.random.RandomModule
+import org.wikipedia.feed.readaloud.ReadAloudLeadSectionModule
 import org.wikipedia.feed.wikigames.GamesModule
+import org.wikipedia.page.PageTitle
 import org.wikipedia.theme.Theme
 import org.wikipedia.util.L10nUtil
 
@@ -78,6 +79,7 @@ fun ForYouContentTab(
     state: ForYouContentState,
     topInset: Int,
     wikiSite: WikiSite,
+    resolveSavedState: suspend (PageTitle) -> Boolean = { false },
     onAction: (HomeAction) -> Unit = {}
 ) {
     when {
@@ -171,6 +173,7 @@ fun ForYouContentTab(
                                 topInset = topInset,
                                 viewPortHeight = viewportHeight,
                                 wikiSite = wikiSite,
+                                resolveSavedState = resolveSavedState,
                                 onAction = onAction
                             )
                         }
@@ -221,6 +224,7 @@ fun ForYouContentTab(
                                 topInset = topInset,
                                 viewPortHeight = viewportHeight,
                                 wikiSite = wikiSite,
+                                resolveSavedState = resolveSavedState,
                                 onAction = onAction,
                                 onCardImpression = { _, _ -> }
                             )
@@ -238,6 +242,7 @@ private fun LazyListScope.forYouModuleItem(
     topInset: Int,
     viewPortHeight: Dp,
     wikiSite: WikiSite,
+    resolveSavedState: suspend (PageTitle) -> Boolean,
     onAction: (HomeAction) -> Unit,
     onCardImpression: (card: Card, index: Int) -> Unit = { card, index -> onAction(HomeAction.CardImpression(card, index)) }
 ) {
@@ -251,9 +256,27 @@ private fun LazyListScope.forYouModuleItem(
                         .height(viewPortHeight),
                     wikiSite = wikiSite,
                     module = module,
+                    resolveSavedState = resolveSavedState,
                     onPageClick = { card, entry -> onAction(HomeAction.PageClick(card, entry)) },
                     onPageShareClick = { card, entry -> onAction(HomeAction.PageShareClick(card, entry)) },
                     onPageBookmarkClick = { card, entry -> onAction(HomeAction.PageBookmarkClick(card, entry)) },
+                    onHideCardClick = { module, card -> onAction(HomeAction.HideForYouCard(module, card)) },
+                    onHideModuleClick = { onAction(HomeAction.HideModule(module.moduleKey())) },
+                    onCardInView = { onCardImpression(it, index) },
+                    onCustomizeClick = { onAction(HomeAction.CustomizeClick(it)) }
+                )
+            }
+        }
+        is ForYouModule.NewWithinInterest -> {
+            item(key = key) {
+                NewWithinInterestModule(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(viewPortHeight),
+                    topInset = topInset,
+                    wikiSite = wikiSite,
+                    module = module,
+                    onPageClick = { card, entry -> onAction(HomeAction.PageClick(card, entry)) },
                     onHideCardClick = { module, card -> onAction(HomeAction.HideForYouCard(module, card)) },
                     onHideModuleClick = { onAction(HomeAction.HideModule(module.moduleKey())) },
                     onCardInView = { onCardImpression(it, index) },
@@ -269,6 +292,7 @@ private fun LazyListScope.forYouModuleItem(
                         .height(viewPortHeight),
                     wikiSite = wikiSite,
                     module = module,
+                    resolveSavedState = resolveSavedState,
                     onPageClick = { card, entry -> onAction(HomeAction.PageClick(card, entry)) },
                     onPageShareClick = { card, entry -> onAction(HomeAction.PageShareClick(card, entry)) },
                     onPageBookmarkClick = { card, entry -> onAction(HomeAction.PageBookmarkClick(card, entry)) },
@@ -287,6 +311,7 @@ private fun LazyListScope.forYouModuleItem(
                         .height(viewPortHeight),
                     wikiSite = wikiSite,
                     module = module,
+                    resolveSavedState = resolveSavedState,
                     onPageClick = { card, entry -> onAction(HomeAction.PageClick(card, entry)) },
                     onPageShareClick = { card, entry -> onAction(HomeAction.PageShareClick(card, entry)) },
                     onPageBookmarkClick = { card, entry -> onAction(HomeAction.PageBookmarkClick(card, entry)) },
@@ -331,6 +356,7 @@ private fun LazyListScope.forYouModuleItem(
                                 .height(viewPortHeight),
                             wikiSite = wikiSite,
                             module = module,
+                            resolveSavedState = resolveSavedState,
                             onPageClick = { card, entry -> onAction(HomeAction.PageClick(card, entry)) },
                             onPageShareClick = { card, entry -> onAction(HomeAction.PageShareClick(card, entry)) },
                             onPageBookmarkClick = { card, entry -> onAction(HomeAction.PageBookmarkClick(card, entry)) },
@@ -378,6 +404,7 @@ private fun LazyListScope.forYouModuleItem(
                             topInset = topInset,
                             wikiSite = wikiSite,
                             module = module,
+                            resolveSavedState = resolveSavedState,
                             updateFrequency = module.updateFrequency.displayStringRes,
                             onPageClick = { card, entry -> onAction(HomeAction.PageClick(card, entry)) },
                             onPageShareClick = { card, entry -> onAction(HomeAction.PageShareClick(card, entry)) },
@@ -433,6 +460,7 @@ private fun LazyListScope.forYouModuleItem(
                         .height(viewPortHeight),
                     wikiSite = wikiSite,
                     module = module,
+                    resolveSavedState = resolveSavedState,
                     onPageClick = { card, entry -> onAction(HomeAction.PageClick(card, entry)) },
                     onPageShareClick = { card, entry -> onAction(HomeAction.PageShareClick(card, entry)) },
                     onPageBookmarkClick = { card, entry -> onAction(HomeAction.PageBookmarkClick(card, entry)) },
@@ -441,6 +469,29 @@ private fun LazyListScope.forYouModuleItem(
                     onCardInView = { onCardImpression(it, index) },
                     onCustomizeClick = { onAction(HomeAction.CustomizeClick(it)) },
                     onShuffleClick = { onAction(HomeAction.ShuffleClick) }
+                )
+            }
+        }
+        is ForYouModule.ReadAloudLeadSection -> {
+            item(key = key) {
+                ReadAloudLeadSectionModule(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(viewPortHeight),
+                    wikiSite = wikiSite,
+                    module = module,
+                    resolveSavedState = resolveSavedState,
+                    onPageClick = { card, entry -> onAction(HomeAction.PageClick(card, entry)) },
+                    onPageShareClick = { card, entry -> onAction(HomeAction.PageShareClick(card, entry)) },
+                    onPageBookmarkClick = { card, entry -> onAction(HomeAction.PageBookmarkClick(card, entry)) },
+                    onHideCardClick = { module, card -> onAction(HomeAction.HideForYouCard(module, card)) },
+                    onHideModuleClick = { onAction(HomeAction.HideModule(module.moduleKey())) },
+                    onCardInView = { onCardImpression(it, index) },
+                    onCustomizeClick = { onAction(HomeAction.CustomizeClick(it)) },
+                    onPlayClick = { onAction(HomeAction.ReadAloudPlayClick) },
+                    onShowSurvey = { onAction(HomeAction.ReadAloudShowSurvey) },
+                    onInfoClick = { onAction(HomeAction.ReadAloudShowInfo) },
+                    onReportIssueClick = { onAction(HomeAction.ReadAloudReportIssue) }
                 )
             }
         }
@@ -501,13 +552,11 @@ fun ForYouFeedMessageView(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterVertically)
     ) {
-        SubcomposeAsyncImage(
+        AsyncImage(
             modifier = Modifier.size(125.dp),
             model = ImageRequest.Builder(context)
                 .data(illustrationResId)
-                .allowHardware(false)
                 .build(),
-            success = { SubcomposeAsyncImageContent() },
             contentDescription = null
         )
         Spacer(modifier = Modifier.height(16.dp))

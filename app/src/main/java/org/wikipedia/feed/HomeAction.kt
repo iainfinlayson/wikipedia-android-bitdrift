@@ -1,10 +1,10 @@
 package org.wikipedia.feed
 
 import org.wikipedia.dataclient.page.PageSummary
-import org.wikipedia.feed.image.FeaturedImageCard
 import org.wikipedia.feed.model.Card
+import org.wikipedia.feed.model.FeaturedImageCard
 import org.wikipedia.feed.model.ForYouCard
-import org.wikipedia.feed.news.NewsCard
+import org.wikipedia.feed.model.NewsCard
 import org.wikipedia.feed.news.NewsItem
 import org.wikipedia.feed.wikigames.WikiGame
 import org.wikipedia.history.HistoryEntry
@@ -41,4 +41,8 @@ sealed interface HomeAction {
     data object SeeAllRecommendationsClick : HomeAction
     data class GameActionClick(val wikiGame: WikiGame) : HomeAction
     data object GoToGamesHubClick : HomeAction
+    data object ReadAloudPlayClick : HomeAction
+    data object ReadAloudShowSurvey : HomeAction
+    data object ReadAloudShowInfo : HomeAction
+    data object ReadAloudReportIssue : HomeAction
 }

@@ -17,8 +17,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.wikipedia.Constants.InvokeSource
 import org.wikipedia.R
 import org.wikipedia.WikipediaApp
@@ -26,38 +32,52 @@ import org.wikipedia.analytics.testkitchen.TestKitchenAdapter
 import org.wikipedia.compose.components.WikipediaAlertDialog
 import org.wikipedia.compose.components.menu.PageOverflowMenuViewModel
 import org.wikipedia.compose.theme.BaseTheme
+import org.wikipedia.database.AppDatabase
 import org.wikipedia.dataclient.WikiSite
 import org.wikipedia.feed.didyouknow.DidYouKnowActivity
-import org.wikipedia.feed.didyouknow.DidYouKnowCard
+import org.wikipedia.feed.interests.NewWithinInterestABTest
 import org.wikipedia.feed.model.Card
+import org.wikipedia.feed.model.DidYouKnowCard
 import org.wikipedia.feed.model.DiscoverCard
+import org.wikipedia.feed.model.DiscoverEnablePromptCard
 import org.wikipedia.feed.model.EmptyCommunityCard
 import org.wikipedia.feed.model.EmptyForYouCard
 import org.wikipedia.feed.model.GamesModulePromptCard
+import org.wikipedia.feed.model.NewWithinInterestCard
+import org.wikipedia.feed.model.OnThisDayCard
 import org.wikipedia.feed.model.PlacesOfInterestLocationPromptCard
+import org.wikipedia.feed.model.RandomCard
+import org.wikipedia.feed.model.ReadAloudLeadSectionCard
+import org.wikipedia.feed.model.SeeAllRecommendationCard
+import org.wikipedia.feed.model.TopReadCard
 import org.wikipedia.feed.model.WikiGameCard
 import org.wikipedia.feed.onboarding.ExploreFeedUpdatePromptActivity
 import org.wikipedia.feed.onthisday.OnThisDayActivity
-import org.wikipedia.feed.onthisday.OnThisDayCard
 import org.wikipedia.feed.personalization.PersonalizationActivity
 import org.wikipedia.feed.personalization.PersonalizationActivity.Companion.RESULT_INTERESTS_UPDATED
 import org.wikipedia.feed.personalization.homepreference.HomePreferenceType
+import org.wikipedia.feed.readaloud.ReadAloudLeadSectionABTest
+import org.wikipedia.feed.readaloud.ReadAloudSurveyDialog
 import org.wikipedia.feed.topread.TopReadArticlesActivity
-import org.wikipedia.feed.topread.TopReadCard
 import org.wikipedia.feed.wikigames.OnThisDayCardGameState
 import org.wikipedia.feed.wikigames.WikiGame
 import org.wikipedia.games.GamesHubActivity
 import org.wikipedia.games.db.DailyGameHistory
 import org.wikipedia.games.onthisday.OnThisDayGameActivity
+import org.wikipedia.history.HistoryEntry
 import org.wikipedia.main.MainActivity
 import org.wikipedia.main.MainFragment
 import org.wikipedia.navtab.NavTab
 import org.wikipedia.notifications.NotificationActivity
+import org.wikipedia.page.ExclusiveBottomSheetPresenter
+import org.wikipedia.page.PageTitle
+import org.wikipedia.page.linkpreview.LinkPreviewDialog
 import org.wikipedia.page.tabs.TabActivity
 import org.wikipedia.places.PlacesActivity
 import org.wikipedia.random.RandomActivity
 import org.wikipedia.readinglist.ReadingListActivity
 import org.wikipedia.readinglist.ReadingListMode
+import org.wikipedia.readinglist.SaveArticleSheetDialog
 import org.wikipedia.readinglist.recommended.RecommendedReadingListOnboardingActivity
 import org.wikipedia.readinglist.recommended.RecommendedReadingListSettingsActivity
 import org.wikipedia.settings.Prefs
@@ -67,14 +87,20 @@ import org.wikipedia.settings.languages.WikipediaLanguagesActivity
 import org.wikipedia.theme.Theme
 import org.wikipedia.util.FeedbackUtil
 import org.wikipedia.util.ShareUtil
+import org.wikipedia.util.UriUtil
 import org.wikipedia.views.SurveyDialog
 import java.time.LocalDate
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), LinkPreviewDialog.LoadPageCallback {
     private val viewModel: HomeViewModel by viewModels()
     private val pageOverflowMenuViewModel: PageOverflowMenuViewModel by viewModels()
     private val cardImpressions = mutableSetOf<String>()
-    private val instrument = TestKitchenAdapter.client.getInstrument("apps-home-feed").startFunnel("home_feed")
+    private val instrument = TestKitchenAdapter.client.getInstrument("apps-home-feed")
+        .startFunnel("home_feed").also {
+            if (NewWithinInterestABTest().isTestActive()) {
+                it.setExperiment(TestKitchenAdapter.getExperiment(NewWithinInterestABTest()))
+            }
+        }
 
     private val personalizationResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         if (it.resultCode == RESULT_OK) {
@@ -92,6 +118,28 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                viewModel.forYouNetworkLatency.collectLatest {
+                    if (it > 0) {
+                        instrument.submitInteraction("timing", actionSource = "for_you_latency", actionContext = mapOf("latency" to it))
+                    }
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                viewModel.readAloudExperimentAssigned.collectLatest { assigned ->
+                    val test = ReadAloudLeadSectionABTest()
+                    if (assigned && test.isTestActive() && !NewWithinInterestABTest().isTestActive()) {
+                        instrument.setExperiment(TestKitchenAdapter.getExperiment(test))
+                    }
+                }
+            }
+        }
+
         if (savedInstanceState == null) {
             maybeShowExploreFeedUpdatePrompt()
         }
@@ -111,6 +159,7 @@ class HomeFragment : Fragment() {
                 val forYouContentState by viewModel.forYouState.collectAsState()
                 val communityContentState by viewModel.communityState.collectAsState()
                 var swipeToExplorePromptShown by remember { mutableStateOf(Prefs.isHomeSwipeToExplorePromptShown) }
+                var showReadAloudSurveyDialog by remember { mutableStateOf(false) }
 
                 BaseTheme(currentTheme = if (selectedTab == HomeTab.FOR_YOU) Theme.BLACK else WikipediaApp.instance.currentTheme) {
                     HomeScreen(
@@ -120,9 +169,19 @@ class HomeFragment : Fragment() {
                         communityContentState = communityContentState,
                         forYouContentState = forYouContentState,
                         overflowMenuState = pageOverflowMenuViewModel.pageOverflowMenuState,
+                        savedInReadingListTitles = viewModel.savedInReadingListTitles.collectAsState().value,
+                        resolveForYouSavedState = { title ->
+                            AppDatabase.instance.readingListPageDao().findPageInAnyList(title) != null
+                        },
                         tabsState = tabsState,
                         notificationBellState = notificationState,
-                        onAction = { handleHomeAction(it, wikiSite, selectedTab) }
+                        onAction = {
+                            if (it is HomeAction.ReadAloudShowSurvey) {
+                                showReadAloudSurveyDialog = true
+                            } else {
+                                handleHomeAction(it, wikiSite, selectedTab)
+                            }
+                        }
                     )
 
                     if (selectedTab == HomeTab.FOR_YOU && !swipeToExplorePromptShown && forYouContentState.modules.isNotEmpty()) {
@@ -146,6 +205,14 @@ class HomeFragment : Fragment() {
                             onConfirmButtonClick = dismissSwipePrompt
                         )
                     }
+
+                    if (showReadAloudSurveyDialog) {
+                        ReadAloudSurveyDialog(onDismissRequest = { showReadAloudSurveyDialog = false }, instrument)
+                    } else {
+                        if (ReadAloudSurveyDialog.shouldShow(byDate = true)) {
+                            showReadAloudSurveyDialog = true
+                        }
+                    }
                 }
             }
         }
@@ -156,6 +223,7 @@ class HomeFragment : Fragment() {
         (requireActivity() as? MainActivity)?.onTabChanged(NavTab.HOME)
         viewModel.updateTabCount()
         viewModel.updateSelectedLanguageIfNeeded()
+        instrument.stopFunnel()
         instrument.startFunnel("home_feed")
         refreshNotification()
         maybeShowSurveyDialog()
@@ -168,7 +236,6 @@ class HomeFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         cardImpressions.clear()
-        instrument.stopFunnel()
     }
 
     fun refreshNotification() {
@@ -241,11 +308,15 @@ class HomeFragment : Fragment() {
             }
             is HomeAction.PageClick -> {
                 instrument.submitInteraction("click", actionSource = action.card.javaClass.simpleName, elementId = "article_open", pageData = TestKitchenAdapter.getPageData(pageTitle = action.historyEntry.title))
-                (parentFragment as? MainFragment)?.onFeedSelectPage(action.historyEntry, false)
+                if (action.card is NewWithinInterestCard) {
+                    ExclusiveBottomSheetPresenter.show(childFragmentManager, LinkPreviewDialog.newInstance(action.historyEntry))
+                } else {
+                    (parentFragment as? MainFragment)?.onFeedSelectPage(action.historyEntry, false)
+                }
             }
             is HomeAction.PageBookmarkClick -> {
                 instrument.submitInteraction("click", actionSource = action.card.javaClass.simpleName, elementId = "article_save", pageData = TestKitchenAdapter.getPageData(pageTitle = action.historyEntry.title))
-                (parentFragment as? MainFragment)?.onFeedAddPageToList(action.historyEntry, true)
+                SaveArticleSheetDialog.show(childFragmentManager, action.historyEntry.title)
             }
             is HomeAction.PageShareClick -> {
                 instrument.submitInteraction("click", actionSource = action.card.javaClass.simpleName, elementId = "article_share", pageData = TestKitchenAdapter.getPageData(pageTitle = action.historyEntry.title))
@@ -268,17 +339,9 @@ class HomeFragment : Fragment() {
                         (parentFragment as? MainFragment)?.onFeedSelectPage(entry, true)
                         viewModel.updateTabCount(true)
                     },
-                    onAddRequest = { entry, addToDefault ->
+                    onSaveRequest = { entry ->
                         instrument.submitInteraction("click", actionSource = card.javaClass.simpleName, actionSubtype = "feed_item_overflow", elementId = "article_save", pageData = TestKitchenAdapter.getPageData(pageTitle = entry.title))
-                        (parentFragment as? MainFragment)?.onFeedAddPageToList(entry, addToDefault)
-                    },
-                    onMoveRequest = { id, entry ->
-                        instrument.submitInteraction("click", actionSource = card.javaClass.simpleName, actionSubtype = "feed_item_overflow", elementId = "article_move", pageData = TestKitchenAdapter.getPageData(pageTitle = entry.title))
-                        (parentFragment as? MainFragment)?.onFeedMovePageToList(id, entry)
-                    },
-                    onRemoveRequest = { entry, lists ->
-                        instrument.submitInteraction("click", actionSource = card.javaClass.simpleName, actionSubtype = "feed_item_overflow", elementId = "article_remove", pageData = TestKitchenAdapter.getPageData(pageTitle = entry.title))
-                        (parentFragment as? MainFragment)?.onFeedRemovePageFromList(entry, lists)
+                        (parentFragment as? MainFragment)?.onFeedSavePage(entry)
                     },
                     onShareRequest = { entry ->
                         instrument.submitInteraction("click", actionSource = card.javaClass.simpleName, actionSubtype = "feed_item_overflow", elementId = "article_share", pageData = TestKitchenAdapter.getPageData(pageTitle = entry.title))
@@ -347,7 +410,9 @@ class HomeFragment : Fragment() {
                 when (val card = action.card) {
                     is TopReadCard -> {
                         instrument.submitInteraction("click", actionSource = card.javaClass.simpleName, elementId = "more_top_read")
-                        startActivity(TopReadArticlesActivity.newIntent(requireActivity(), TopReadCard(card.articles, card.age, wikiSite)))
+                        startActivity(TopReadArticlesActivity.newIntent(requireActivity(),
+                            TopReadCard(card.articles, card.age, wikiSite)
+                        ))
                     }
                     is OnThisDayCard -> {
                         instrument.submitInteraction("click", actionSource = card.javaClass.simpleName, elementId = "more_on_this_day")
@@ -374,7 +439,7 @@ class HomeFragment : Fragment() {
                 requireActivity().startActivity(intent)
             }
             HomeAction.ShuffleClick -> {
-                instrument.submitInteraction("click", elementId = "random_card_shuffle_button")
+                instrument.submitInteraction("click", actionSource = RandomCard::class.java.simpleName, elementId = "random_card_shuffle_button")
                 startActivity(RandomActivity.newIntent(requireActivity(), wikiSite, InvokeSource.FEED))
             }
             HomeAction.PlacesTeaserClick -> {
@@ -382,11 +447,11 @@ class HomeFragment : Fragment() {
                 requireActivity().startActivity(PlacesActivity.newIntent(requireContext()))
             }
             HomeAction.DiscoverTeaserClick -> {
-                instrument.submitInteraction("click", elementId = "enable_discover_reading_list_button")
+                instrument.submitInteraction("click", actionSource = DiscoverEnablePromptCard::class.java.simpleName, elementId = "enable_discover_reading_list_button")
                 requireActivity().startActivity(RecommendedReadingListOnboardingActivity.newIntent(requireContext()))
             }
             HomeAction.SeeAllRecommendationsClick -> {
-                instrument.submitInteraction("click", elementId = "explore_all_recommendations_button")
+                instrument.submitInteraction("click", actionSource = SeeAllRecommendationCard::class.java.simpleName, elementId = "explore_all_recommendations_button")
                 startActivity(ReadingListActivity.newIntent(requireContext(), readingListMode = ReadingListMode.RECOMMENDED))
             }
             is HomeAction.GameActionClick -> {
@@ -416,6 +481,21 @@ class HomeFragment : Fragment() {
                 instrument.submitInteraction("click", actionSource = GamesModulePromptCard::class.java.simpleName, elementId = "go_to_games_hub")
                 requireActivity().startActivity(GamesHubActivity.newIntent(requireContext()))
             }
+            HomeAction.ReadAloudPlayClick -> {
+                instrument.submitInteraction("click", actionSource = ReadAloudLeadSectionCard::class.java.simpleName, elementId = "play_pause")
+            }
+            HomeAction.ReadAloudShowInfo -> {
+                instrument.submitInteraction("click", actionSource = ReadAloudLeadSectionCard::class.java.simpleName, elementId = "menu_about")
+                UriUtil.visitInExternalBrowser(requireContext(), getString(R.string.read_aloud_lead_section_info_link).toUri())
+            }
+            HomeAction.ReadAloudReportIssue -> {
+                instrument.submitInteraction("click", actionSource = ReadAloudLeadSectionCard::class.java.simpleName, elementId = "menu_report_issue")
+                FeedbackUtil.composeEmail(requireContext(),
+                    subject = getString(R.string.read_aloud_lead_section_report_subject),
+                    body = getString(R.string.read_aloud_lead_section_report_body))
+            }
+            else -> {
+            }
         }
     }
 
@@ -434,7 +514,7 @@ class HomeFragment : Fragment() {
         val minVisits = 4
 
         // don't show the survey if the user has not seen other dialogs or prompts that can be shown on the feed
-        if (!Prefs.isExploreFeedUpdatePromptShown || !Prefs.isHomeFeedUpdateTooltipShown) {
+        if (!Prefs.isExploreFeedUpdatePromptShown) {
             return
         }
 
@@ -474,5 +554,14 @@ class HomeFragment : Fragment() {
                 )
             }
         )
+    }
+
+    override fun onLinkPreviewLoadPage(title: PageTitle, entry: HistoryEntry, inNewTab: Boolean) {
+        if (inNewTab) {
+            (parentFragment as? MainFragment)?.onFeedSelectPage(entry, true)
+            viewModel.updateTabCount(true)
+        } else {
+            (parentFragment as? MainFragment)?.onFeedSelectPage(entry, false)
+        }
     }
 }
