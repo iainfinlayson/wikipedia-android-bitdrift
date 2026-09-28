@@ -43,9 +43,7 @@ import org.wikipedia.views.imageservice.CoilImageServiceLoader
 import org.wikipedia.views.imageservice.ImageService
 import io.bitdrift.capture.Capture.Logger
 import io.bitdrift.capture.Configuration
-import io.bitdrift.capture.experimental.ExperimentalBitdriftApi
-import io.bitdrift.capture.providers.session.SessionStrategy
-import io.bitdrift.capture.webview.WebViewConfiguration
+import io.bitdrift.capture.providers.session.SessionConfiguration
 import kotlin.time.TimeSource
 import java.util.UUID
 import org.wikipedia.bitdriftdev.GlobalDebugGesture
@@ -145,7 +143,6 @@ class WikipediaApp : Application() {
         }
     }
 
-    @OptIn(ExperimentalBitdriftApi::class)
     override fun onCreate() {
         super.onCreate()
 
@@ -162,19 +159,9 @@ class WikipediaApp : Application() {
         Logger.start(
             // update local.properties to include BITDRIFT_API_KEY
             apiKey = BuildConfig.BITDRIFT_API_KEY,
-            sessionStrategy = SessionStrategy.Fixed(),
-            configuration = Configuration(
-                webViewConfiguration = WebViewConfiguration(
-                    capturePageViews = true,
-                    captureNetworkRequests = true,
-                    captureNavigationEvents = true,
-                    captureWebVitals = true,
-                    captureLongTasks = true,
-                    captureConsoleLogs = true,
-                    captureUserInteractions = true,
-                    captureErrors = true,
-                ),
-            ),
+            // No inactivity timeout: a new session starts on every SDK start (same as the old SessionStrategy.Fixed()).
+            sessionConfiguration = SessionConfiguration(),
+            configuration = Configuration(),
         )
         Logger.setEntityId("demo")
         appStartTime = TimeSource.Monotonic.markNow()

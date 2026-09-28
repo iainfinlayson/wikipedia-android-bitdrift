@@ -337,6 +337,6 @@ private static Properties loadProperties(File file) {
 bitdrift {
     instrumentation {
         automaticOkHttpInstrumentation = true
-        automaticWebViewInstrumentation = true
+        webViewAutomaticInstrumentationScope = JS_ENABLED
     }
 }
